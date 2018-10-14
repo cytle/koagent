@@ -4,16 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "commit": "git-cz",
+    "release": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "commitizen": "^3.0.2",
+    "commitlint-config-cz": "^0.10.1",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.1.2",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "koa": "^2.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
   }
 }
