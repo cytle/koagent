@@ -21,11 +21,15 @@
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "typescript": "^3.1.3",
+    "ts-node": "^7.0.1",
     "typescript-eslint-parser": "^20.0.0"
   },
   "dependencies": {
     "koa": "^2.5.3",
-    "ts-node": "^7.0.1"
+    "koa-proxy": "^0.9.0",
+    "node-fetch": "^2.2.0",
+    "proxy-addr": "^2.0.4",
+    "request": "^2.88.0"
   },
   "config": {
     "commitizen": {
