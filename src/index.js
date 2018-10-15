@@ -1,9 +1,8 @@
 const Koa = require('koa');
+const proxy = require('./middleware/proxy');
 
 const app = new Koa();
 
-app.use(async (ctx) => {
-  ctx.body = 'Hello World';
-});
+app.use(proxy());
 
 app.listen(3000);
