@@ -23,9 +23,15 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
+    "get-port": "^4.0.0",
+    "http-proxy": "^1.17.0",
     "koa": "^2.5.3",
     "koa-proxy": "^0.9.0",
+    "lodash": "^4.17.11",
     "node-fetch": "^2.2.0",
+    "path-match": "^1.2.4",
+    "pem": "^1.13.1",
+    "promisfy": "^1.1.4",
     "proxy-addr": "^2.0.4",
     "request": "^2.88.0"
   },
