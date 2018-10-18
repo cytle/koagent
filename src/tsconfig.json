@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "pretty": true,
+    "target": "es2015",
+    "rootDir": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "strictFunctionTypes": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "skipLibCheck": true,
+
+    "preserveConstEnums": true,
+    "newLine": "lf",
+
+    "types": [],
+    "outDir": "dist",
+    "lib": [
+        "dom",
+        "es2017"
+    ]
+  },
+  "exclude": [
+    "cmd",
+    "esm",
+    "coverage",
+    "old",
+    ".felint",
+    ".milti_hooks",
+    "**/test/**/*.spec.ts"
+  ],
+  "compileOnSave": true
+}
