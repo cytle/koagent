@@ -4,6 +4,7 @@ export interface ICertificateModel {
 }
 
 export interface ICertificateService {
+  getRoot(): Promise<ICertificateModel>;
   getForHost(host: string): Promise<ICertificateModel>;
 }
 

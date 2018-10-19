@@ -1,23 +1,28 @@
 import Koa from 'koa';
+import KoaRouter from 'koa-router';
 import getPort from 'get-port';
 import certificate from '../middleware/certificate';
 import httpProxy from '../middleware/httpProxy';
 import config from '../config';
 
-export default async function createKoaApp(): Promise<Koa> {
+export default async function createKoaApp(router: KoaRouter): Promise<Koa> {
   const app = new Koa();
-  certificate(app, {
+
+  certificate(app, router, {
     storagePath: config.certifacateStoragePath,
     rootKey: config.certifacateRootKey,
     encoding: 'utf-8',
   });
+
   app.use(async (ctx, next: Function) => {
     console.log(ctx.request.url);
     await next();
     console.log('resolve', ctx.res.finished);
   });
 
+  app.use(router.routes());
   app.use(httpProxy({}));
+
   const port = await getPort({ port: 3000 });
 
   await new Promise(async (resolve, reject) => {

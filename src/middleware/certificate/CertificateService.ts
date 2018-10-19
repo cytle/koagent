@@ -52,7 +52,7 @@ export class CertificateService implements ICertificateService {
     return model;
   }
 
-  private async getRoot(): Promise<ICertificateModel> {
+  public async getRoot(): Promise<ICertificateModel> {
     const key = this.rootKey;
     if (await this.storage.has(key)) {
       return this.storage.get(key);
