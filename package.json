@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
+    "build": "rimraf dist && tsc",
     "release": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +25,7 @@
     "commitlint-config-cz": "^0.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.1.2",
+    "rimraf": "^2.6.2",
     "standard-version": "^4.4.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
