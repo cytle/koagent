@@ -40,6 +40,7 @@
     "esm",
     "coverage",
     "old",
+    "dist",
     ".felint",
     ".milti_hooks",
     "**/test/**/*.spec.ts"
