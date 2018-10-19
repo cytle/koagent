@@ -1,6 +1,6 @@
 import createKoaApp from './createKoaApp';
 
-Promise.resolve(async () => {
+Promise.resolve().then(async () => {
   try {
     await createKoaApp();
   } catch (error) {
