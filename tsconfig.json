@@ -1,32 +1,49 @@
 {
   "compilerOptions": {
-      "moduleResolution": "node",
-      "target": "es2015",
-      "sourceRoot": "./src",
-      "sourceMap": true,
-      "strictNullChecks": true,
-      "strictFunctionTypes": true,
-      "allowSyntheticDefaultImports": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "esModuleInterop": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "module": "commonjs",
-      "outDir": "dist",
-      "lib": [
-          "dom",
-          "es2017"
-      ]
+    "pretty": true,
+    "target": "es2015",
+    "rootDir": "./src",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "strictFunctionTypes": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "skipLibCheck": true,
+
+    "preserveConstEnums": true,
+    "newLine": "lf",
+
+    "types": [],
+    "outDir": "dist",
+    "lib": [
+        "dom",
+        "es2017"
+    ]
   },
   "exclude": [
-      "cmd",
-      "esm",
-      "coverage",
-      "old",
-      ".felint",
-      ".milti_hooks",
-      "**/test/**/*.spec.ts"
+    "cmd",
+    "esm",
+    "coverage",
+    "old",
+    "dist",
+    ".felint",
+    ".milti_hooks",
+    "**/test/**/*.spec.ts"
   ],
   "compileOnSave": true
 }
