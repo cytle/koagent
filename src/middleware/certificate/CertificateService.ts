@@ -52,11 +52,23 @@ export class CertificateService implements ICertificateService {
     return model;
   }
 
-  private getRoot(): Promise<ICertificateModel> {
-    return this.storage.get(this.rootKey);
+  private async getRoot(): Promise<ICertificateModel> {
+    const key = this.rootKey;
+    if (await this.storage.has(key)) {
+      return this.storage.get(key);
+    }
+    const model = await this.createRoot();
+    this.storage.set(key, model);
+    return model;
   }
   private async createRoot() {
-
+    const res = await pemCreateCertificate({
+      days: 365 * 10,
+    });
+    return {
+      cert: res.certificate,
+      key: res.clientKey,
+    };
   }
   /**
    * 为指定域名创建证书 (使用自定义的根证书)

@@ -4,7 +4,7 @@ import certificate from '../middleware/certificate';
 import httpProxy from '../middleware/httpProxy';
 import config from '../config';
 
-Promise.resolve().then(async () => {
+export default function createKoaApp() {
   const app = new Koa();
   certificate(app, {
     storagePath: config.certifacateStoragePath,
@@ -25,6 +25,4 @@ Promise.resolve().then(async () => {
       (error?: Error) => error ? reject(error) : resolve(app),
     );
   });
-}).catch((error) => {
-  console.error(error);
-});
+}
