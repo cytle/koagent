@@ -2,7 +2,7 @@
   "compilerOptions": {
     "pretty": true,
     "target": "es2015",
-    "rootDir": ".",
+    "rootDir": "./src",
     "module": "commonjs",
     "moduleResolution": "node",
 
