@@ -15,9 +15,13 @@ export default async function createKoaApp(router: KoaRouter): Promise<Koa> {
   });
 
   app.use(async (ctx, next: Function) => {
-    console.log(ctx.request.url);
-    await next();
-    console.log('resolve', ctx.res.finished);
+    try {
+      console.log(ctx.request.url);
+      await next();
+      console.log('resolve', ctx.res.finished);
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   app.use(router.routes());

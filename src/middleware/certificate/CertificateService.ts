@@ -14,7 +14,10 @@ export class CertificateService implements ICertificateService {
    * @param storage 证书存储服务
    * @param cache 缓存服务
    */
-  constructor(private rootKey: string, private storage: ICertificateStorage) {}
+  constructor(
+    private rootKey: string,
+    private storage: ICertificateStorage,
+  ) {}
   /**
    * 为域名获取证书
    * @param host
@@ -63,7 +66,15 @@ export class CertificateService implements ICertificateService {
   }
   private async createRoot() {
     const res = await pemCreateCertificate({
-      days: 365 * 10,
+      country: 'CN',
+      state: 'ZheJiang',
+      locality: 'HangZhou',
+      organization: 'koagent',
+      organizationUnit: 'koagent',
+      altNames: ['koagent'],
+      commonName: 'koagent',
+      days: 365 * 10 + 3,
+      selfSigned: true,
     });
     return {
       cert: res.certificate,
@@ -78,7 +89,7 @@ export class CertificateService implements ICertificateService {
     const res = await pemCreateCertificate({
       altNames: [host],
       commonName: host,
-      days: 365 * 10,
+      days: 365 * 10 + 3,
       serviceCertificate: rootModel.cert,
       serviceKey: rootModel.key,
     });
