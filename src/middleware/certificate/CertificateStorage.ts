@@ -1,17 +1,7 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
-import { promisify } from 'es6-promisify';
 import LRUCache from 'lru-cache';
 import { ICertificateStorage, ICertificateModel, ICertificateStorageOptions } from './interfaces';
-
-const fsReadFile = promisify(fs.readFile);
-const fsWriteFile = promisify(fs.writeFile);
-const fsExists = (p: string): Promise<boolean> =>
-  new Promise((resolve) => {
-    fs.exists(p, (exists: boolean) => {
-      resolve(exists);
-    });
-  });
 
 export class CertificateStorage implements ICertificateStorage {
   private cache: LRUCache.Cache<string, ICertificateModel>;
@@ -25,7 +15,7 @@ export class CertificateStorage implements ICertificateStorage {
   }
   public async has(storageKey: string): Promise<boolean> {
     return this.cache.has(storageKey) ||
-      await fsExists(this.getCertPath(storageKey));
+      await fs.pathExists(this.getCertPath(storageKey));
   }
   public async get(storageKey: string): Promise<ICertificateModel> {
     if (this.cache.has(storageKey)) {
@@ -40,8 +30,8 @@ export class CertificateStorage implements ICertificateStorage {
       encoding: this.encoding,
     };
     const [key, cert] = await Promise.all([
-      fsReadFile(this.getKeyPath(storageKey), readOptions),
-      fsReadFile(this.getCertPath(storageKey), readOptions),
+      fs.readFile(this.getKeyPath(storageKey), readOptions),
+      fs.readFile(this.getCertPath(storageKey), readOptions),
     ]);
     const model = { key, cert };
     this.cache.set(storageKey, model);
@@ -55,8 +45,8 @@ export class CertificateStorage implements ICertificateStorage {
 
     this.cache.set(storageKey, model);
     await Promise.all([
-      fsWriteFile(this.getKeyPath(storageKey), model.key, writeOptions),
-      fsWriteFile(this.getCertPath(storageKey), model.cert, writeOptions),
+      fs.writeFile(this.getKeyPath(storageKey), model.key, writeOptions),
+      fs.writeFile(this.getCertPath(storageKey), model.cert, writeOptions),
     ]);
   }
 

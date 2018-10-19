@@ -1,4 +1,4 @@
-import { promisify } from 'es6-promisify';
+import { promisfy } from 'promisfy';
 import parseDomain from 'parse-domain';
 import pem from 'pem';
 import {
@@ -7,7 +7,7 @@ import {
   ICertificateModel,
 } from './interfaces';
 
-const pemCreateCertificate = promisify(pem.createCertificate);
+const pemCreateCertificate = promisfy(pem.createCertificate);
 
 export class CertificateService implements ICertificateService {
   /**
@@ -20,7 +20,7 @@ export class CertificateService implements ICertificateService {
    * @param host
    * @returns {Promise<Certification>}
    */
-  public async getCertificationForHost(host: string) {
+  public async getForHost(host: string) {
     let domain = host;
     /**
      * 解析后 www.baidu.com
@@ -43,7 +43,7 @@ export class CertificateService implements ICertificateService {
     return this.getCertification(domain);
   }
 
-  async getCertification(key: string): Promise<ICertificateModel> {
+  private async getCertification(key: string): Promise<ICertificateModel> {
     if (await this.storage.has(key)) {
       return this.storage.get(key);
     }
@@ -55,7 +55,9 @@ export class CertificateService implements ICertificateService {
   private getRoot(): Promise<ICertificateModel> {
     return this.storage.get(this.rootKey);
   }
+  private async createRoot() {
 
+  }
   /**
    * 为指定域名创建证书 (使用自定义的根证书)
    */

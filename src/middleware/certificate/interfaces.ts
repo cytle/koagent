@@ -4,7 +4,7 @@ export interface ICertificateModel {
 }
 
 export interface ICertificateService {
-  getCertificationForHost(host: string): Promise<ICertificateModel>;
+  getForHost(host: string): Promise<ICertificateModel>;
 }
 
 export interface ICertificateStorage {
@@ -16,4 +16,8 @@ export interface ICertificateStorage {
 export interface ICertificateStorageOptions {
   storagePath: string;
   encoding?: string;
+}
+
+export interface ICertificateOptions extends ICertificateStorageOptions {
+  rootKey: string;
 }
