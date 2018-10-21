@@ -1,0 +1,20 @@
+{
+  "name": "koagent",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
+  "dependencies": {
+    "get-port": "^4.0.0",
+    "koa": "^2.5.3",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.11"
+  },
+  "license": "ISC"
+}
