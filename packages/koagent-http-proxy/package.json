@@ -1,6 +1,6 @@
 {
   "name": "koagent-http-proxy",
-  "version": "0.0.0",
+  "version": "0.1.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,10 +11,10 @@
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "devDependencies": {
     "@types/http-proxy": "^1.16.2",
-    "@types/lodash": "^4.14.117",
     "@types/koa": "^2.0.46",
-    "koa": "^2.5.3",
-    "@types/node": "^10.12.0"
+    "@types/lodash": "^4.14.117",
+    "@types/node": "^10.12.0",
+    "koa": "^2.5.3"
   },
   "dependencies": {
     "http-proxy": "^1.17.0",
