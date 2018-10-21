@@ -1,6 +1,7 @@
 {
   "name": "koagent",
-  "version": "0.0.0",
+  "private": true,
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +9,6 @@
     "start": "ts-node src/app/index",
     "build": "rimraf dist && tsc",
     "watch": "tsc --watch",
-    "release": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
@@ -30,25 +30,11 @@
     "husky": "^1.1.2",
     "lerna": "^2.9.0",
     "rimraf": "^2.6.2",
-    "standard-version": "^4.4.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "typescript": "^3.1.3",
     "typescript-eslint-parser": "^20.0.0"
-  },
-  "dependencies": {
-    "fs-extra": "^7.0.0",
-    "get-port": "^4.0.0",
-    "http-proxy": "^1.17.0",
-    "koa": "^2.5.3",
-    "koa-router": "^7.4.0",
-    "lodash": "^4.17.11",
-    "lru-cache": "^4.1.3",
-    "parse-domain": "^2.1.2",
-    "path-match": "^1.2.4",
-    "pem": "^1.13.1",
-    "promisfy": "^1.1.4"
   },
   "config": {
     "commitizen": {

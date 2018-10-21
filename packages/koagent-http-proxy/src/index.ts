@@ -16,7 +16,7 @@ export default (options: HttpProxy.ServerOptions) => {
   const proxy = new HttpProxy(options);
   const globalTarget = options.target || options.forward;
 
-  return ({ req, res, request, certificate }: Koa.Context) =>
+  return ({ req, res, request }: Koa.Context) =>
   new Promise((resolve, reject) => {
     if (res.finished) {
       resolve();
@@ -38,9 +38,9 @@ export default (options: HttpProxy.ServerOptions) => {
     const proxyOptions = {
       target,
       secure: isSecureProtocol(target.protocol),
-      ssl: isSecureProtocol(request.protocol)
-        ? certificate.getForHost(request.url)
-        : undefined,
+      // ssl: isSecureProtocol(request.protocol)
+      //   ? certificate.getForHost(request.url)
+      //   : undefined,
       ws: isWebsocketProtocol(request.protocol),
     };
     proxy.web(req, res, proxyOptions, reject);
