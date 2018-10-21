@@ -12,16 +12,20 @@ declare module 'koa' {
   }
 }
 
-export default (app: Koa, router: KoaRouter, options: ICertificateOptions) => {
+export function createCertificateService(options: ICertificateOptions) {
   fs.ensureDir(options.storagePath);
   const certStorage = new CertificateStorage(options, {});
-  const certService = new CertificateService(options.rootKey, certStorage);
+  return new CertificateService(options.rootKey, certStorage);
+}
+export default (app: Koa, router: KoaRouter, options: ICertificateOptions) => {
+  const certService = createCertificateService(options);
   app.context.certificate = certService;
-  const selfRouter = new KoaRouter();
 
+  const selfRouter = new KoaRouter();
   selfRouter.get('/rootCA', async (ctx) => {
     ctx.set('Content-disposition', 'attachment;filename=koagentCA.crt');
     ctx.body = (await certService.getRoot()).cert;
   });
+
   router.use('/certificate', selfRouter.routes(), selfRouter.allowedMethods());
 };

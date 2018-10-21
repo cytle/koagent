@@ -1,9 +1,9 @@
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
 import getPort from 'get-port';
-import certificate from '../middleware/certificate';
-import httpProxy from '../middleware/httpProxy';
-import config from '../config';
+import certificate from 'koagent-certificate';
+import httpProxy from 'koagent-http-proxy';
+import config from './config';
 
 export default async function createKoaApp(router: KoaRouter): Promise<Koa> {
   const app = new Koa();
