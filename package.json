@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
+    "start": "ts-node src/app/index",
     "build": "rimraf dist && tsc",
     "watch": "tsc --watch",
     "release": "standard-version",
@@ -27,6 +28,7 @@
     "commitlint-config-cz": "^0.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.1.2",
+    "lerna": "^2.9.0",
     "rimraf": "^2.6.2",
     "standard-version": "^4.4.0",
     "ts-node": "^7.0.1",
