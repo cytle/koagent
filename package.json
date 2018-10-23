@@ -6,7 +6,6 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
-    "start": "ts-node src/app/index",
     "build": "rimraf dist && tsc",
     "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,7 +29,6 @@
     "husky": "^1.1.2",
     "lerna": "^2.9.0",
     "rimraf": "^2.6.2",
-    "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "typescript": "^3.1.3",
