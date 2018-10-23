@@ -27,7 +27,9 @@
     "preserveConstEnums": true,
     "newLine": "lf",
 
-    "types": [],
+    "types": [
+      "node"
+    ],
     "lib": [
         "dom",
         "es2017"
