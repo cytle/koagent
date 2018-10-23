@@ -1,4 +1,7 @@
 import _ from 'lodash';
+export * from './interfaces';
+export * from './CertificateService';
+export * from './CertificateStorage';
 import { ICertificateOptions } from './interfaces';
 import { CertificateService } from './CertificateService';
 import { CertificateStorage } from './CertificateStorage';
