@@ -1,1 +1,2 @@
-export * from './connect';
+export * from './Tunnel';
+export * from './interfaces';
