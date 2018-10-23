@@ -9,6 +9,7 @@ export class CertificateStorage implements ICertificateStorage {
   private encoding: string;
   constructor(options: ICertificateStorageOptions, lruCacheOptions: void | LRUCache.Options) {
     // private storagePath: string, private encoding: string,
+    fs.ensureDir(options.storagePath);
     this.storagePath = options.storagePath;
     this.encoding = options.encoding || 'utf-8';
     this.cache = new LRUCache({ max: 500, maxAge: 1000 * 60 * 60, ...lruCacheOptions });
