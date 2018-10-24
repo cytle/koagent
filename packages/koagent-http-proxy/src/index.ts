@@ -46,10 +46,11 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
     const proxyOptions = {
       target,
       ssl: isSecureProtocol(target.protocol)
-        ? koagentCtx.certService.getForHost(target.host)
+        ? await koagentCtx.certService.getForHost(target.host)
         : undefined,
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(target.protocol),
+      prependPath: false,
     };
 
     proxy.web(req, res, proxyOptions, reject);
