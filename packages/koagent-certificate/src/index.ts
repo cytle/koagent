@@ -20,6 +20,6 @@ export default (
 };
 
 export function createCertificateService(options: ICertificateOptions) {
-  const certStorage = new CertificateStorage(options, {});
+  const certStorage = new CertificateStorage(options);
   return new CertificateService(options.rootKey, certStorage);
 }
