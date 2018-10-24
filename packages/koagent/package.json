@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/index",
     "build": "rimraf dist && tsc",
+    "postinstall": "node ./dist/scripts/postinstall.js",
     "prepublishOnly": "npm run build",
     "test": "ts-node src/request"
   },
@@ -13,6 +14,7 @@
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "dependencies": {
     "debug": "^4.1.0",
+    "fs-extra": "^7.0.0",
     "get-port": "^4.0.0",
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
