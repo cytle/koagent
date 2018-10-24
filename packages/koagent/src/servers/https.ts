@@ -19,6 +19,5 @@ export class HttpsServer extends HttpServer{
       cert: serverCrt.cert,
       key: serverCrt.key,
     });
-    return this;
   }
 }

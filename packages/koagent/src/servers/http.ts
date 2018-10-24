@@ -7,22 +7,25 @@ export class HttpServer implements IHttpServer {
   constructor() {}
   public onRequest(handle) {
     this.server.on('request', handle);
+    return this;
   }
   public onConnect(handle) {
     this.server.on('connect', handle);
+    return this;
   }
   public onUpgrade(handle) {
     this.server.on('upgrade', handle);
+    return this;
   }
   public onError(handle) {
     this.server.on('error', handle);
+    return this;
   }
   public listen(...args) {
     this.server.listen(...args);
     return this;
   }
-  public create(): Promise<IHttpServer> | IHttpServer {
+  public create() {
     this.server = http.createServer();
-    return this;
   }
 }
