@@ -3,7 +3,8 @@ import KoaRouter from 'koa-router';
 import { ICertificateService } from 'koagent-certificate';
 
 export interface IKoagentMiddlewareContext {
-  app: Koa;
+  proxyApp: Koa;
+  managerApp: Koa;
   router: KoaRouter;
   certService: ICertificateService;
 }

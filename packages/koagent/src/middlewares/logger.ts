@@ -1,4 +1,5 @@
 import debug from 'debug';
+import Koa from 'koa';
 import { IKoagentMiddlewareContext } from '../interfaces';
 
 interface IKoagentMiddlewareLoggerOptions {
@@ -10,8 +11,9 @@ export default (
   options?: IKoagentMiddlewareLoggerOptions,
 ) => {
   const log = debug((options && options.name) || 'koagent:logger');
-  return (ctx, next) => {
+  return async (ctx: Koa.Context, next) => {
     log('url', ctx.req.url);
-    next();
+    await next();
+    log('statusCode', ctx.res.statusCode);
   };
 };

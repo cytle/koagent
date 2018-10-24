@@ -6,7 +6,7 @@ import { IHttpServer, IKoagentServerOptions } from './interfaces';
 import { Tunnel } from '../handlers';
 import fillReqUrl from './fillReqUrl';
 
-const log = debug('koagent:proxyServer');
+const log = debug('koagent:KoangetServer');
 
 export class KoangetServer implements IHttpServer {
   public static async createServer(options: IKoagentServerOptions) {
