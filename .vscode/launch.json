@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Current TS File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/packages/koagent/node_modules/.bin/ts-node",
+      "args": ["${relativeFile}"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector"
+    },
+    {
+      "name": "Launch Program",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/packages/koagent/node_modules/.bin/ts-node",
+      "cwd": "${workspaceRoot}",
+      "args": [
+        "${workspaceRoot}/packages/koagent/src/index.ts"
+      ]
+    }
+  ]
+}
