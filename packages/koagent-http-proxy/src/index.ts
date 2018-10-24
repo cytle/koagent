@@ -1,7 +1,10 @@
+import debug from 'debug';
 import url from 'url';
 import HttpProxy from 'http-proxy';
 import Koa from 'koa';
 import _ from 'lodash';
+
+const log = debug('koagent:http-proxy');
 
 const isSSL = /^https|wss/i;
 const isSecureProtocol = (protocol: string | undefined) => isSSL.test(protocol || '');
@@ -17,22 +20,22 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
   const proxy = new HttpProxy(options);
 
   return ({ req, res, request }: Koa.Context) =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     if (res.finished) {
       resolve();
       return;
     }
     // 如果没有设置全局的target则直接转发当前的url
     const proxyTargetUrl = request.url || '';
+
+    log('proxyTargetUrl', proxyTargetUrl);
+
     const target = _.isString(proxyTargetUrl)
       ? url.parse(proxyTargetUrl)
       : proxyTargetUrl;
 
     res.setHeader('x-koagent-proxy-target', target.href || '');
 
-    res.on('close', () => {
-      reject(new Error(`Http response closed while proxying ${req.url}`));
-    });
     res.on('finish', () => {
       resolve();
     });
@@ -40,11 +43,12 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
     const proxyOptions = {
       target,
       ssl: isSecureProtocol(request.protocol)
-        ? koagentCtx.certService.getForHost(request.host)
+        ? await koagentCtx.certService.getForHost(request.host)
         : undefined,
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(request.protocol),
     };
+
     proxy.web(req, res, proxyOptions, reject);
   });
 };
