@@ -8,10 +8,11 @@ const isSecureProtocol = (protocol: string | undefined) => isSSL.test(protocol |
 
 const isWS = /^ws/i;
 const isWebsocketProtocol = (protocol: string | undefined) => isWS.test(protocol || '');
+
 /**
  * 使用http-proxy转发请求
- * TODO WebSocket
  */
+
 export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
   const proxy = new HttpProxy(options);
 
