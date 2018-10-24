@@ -36,7 +36,10 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
 
     // res.setHeader('x-koagent-proxy-target', target.href || '');
 
-    res.on('finish', () => {
+    res.on('close', () => {
+      reject(new Error(`Http response closed while proxying ${req.url}`));
+    });
+    res.on('end', () => {
       resolve();
     });
 

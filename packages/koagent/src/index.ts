@@ -10,7 +10,7 @@ import logger from './middlewares/logger';
 // import renderFoo from './middlewares/renderFoo';
 // import tunnel from './middlewares/tunnel';
 
-debug.enable('koagent*');
+debug.enable('*');
 
 const log = debug('koagent');
 
@@ -49,4 +49,12 @@ Promise.resolve().then(async () => {
     .listen(3000, () => {
       log('proxy listen', 3000);
     });
+
+  proxyApp.on('error', (err) => {
+    log('proxyApp error', err);
+  });
+
+  managerApp.on('error', (err) => {
+    log('managerApp error', err);
+  });
 });
