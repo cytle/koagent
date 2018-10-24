@@ -3,9 +3,12 @@ import { KoangetServer } from './servers';
 import config from './config';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
-import httpProxy from 'koagent-http-proxy';
+// import httpProxy from 'koagent-http-proxy';
+import httpProxy from '../../koagent-http-proxy';
 import certificate, { createCertificateService } from 'koagent-certificate';
 import logger from './middlewares/logger';
+// import renderFoo from './middlewares/renderFoo';
+// import tunnel from './middlewares/tunnel';
 
 debug.enable('koagent*');
 
@@ -31,7 +34,9 @@ Promise.resolve().then(async () => {
     certService,
   };
   proxyApp.use(certificate(koagentContext));
+  // proxyApp.use(tunnel(koagentContext));
   proxyApp.use(logger(koagentContext));
+  // proxyApp.use(renderFoo());
   proxyApp.use(httpProxy(koagentContext));
 
   const server = await KoangetServer.createServer({

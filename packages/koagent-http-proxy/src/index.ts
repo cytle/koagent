@@ -19,14 +19,14 @@ const isWebsocketProtocol = (protocol: string | undefined) => isWS.test(protocol
 export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
   const proxy = new HttpProxy(options);
 
-  return ({ req, res, request }: Koa.Context) =>
+  return ({ req, res }: Koa.Context) =>
   new Promise(async (resolve, reject) => {
     if (res.finished) {
       resolve();
       return;
     }
     // 如果没有设置全局的target则直接转发当前的url
-    const proxyTargetUrl = request.url || '';
+    const proxyTargetUrl = req.url || '';
 
     log('proxyTargetUrl', proxyTargetUrl);
 
@@ -34,7 +34,7 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
       ? url.parse(proxyTargetUrl)
       : proxyTargetUrl;
 
-    res.setHeader('x-koagent-proxy-target', target.href || '');
+    // res.setHeader('x-koagent-proxy-target', target.href || '');
 
     res.on('finish', () => {
       resolve();
@@ -42,11 +42,11 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
 
     const proxyOptions = {
       target,
-      ssl: isSecureProtocol(request.protocol)
-        ? await koagentCtx.certService.getForHost(request.host)
+      ssl: isSecureProtocol(target.protocol)
+        ? koagentCtx.certService.getForHost(target.host)
         : undefined,
       secure: isSecureProtocol(target.protocol),
-      ws: isWebsocketProtocol(request.protocol),
+      ws: isWebsocketProtocol(target.protocol),
     };
 
     proxy.web(req, res, proxyOptions, reject);

@@ -6,10 +6,15 @@ Promise.resolve().then(async () => {
   await fs.remove(config.certifacateStoragePath);
   await fs.mkdir(config.certifacateStoragePath);
   const { certifacateRootKey, certifacatePath, certifacateStoragePath } = config;
-  await ['crt', 'key']
+  const files = ['crt', 'key']
     .map(suffix => `${certifacateRootKey}.${suffix}`)
-    .map(name => fs.copy(
+    .map(name => [
       path.join(certifacatePath, name),
       path.join(certifacateStoragePath, name),
-    ));
+    ]);
+
+  console.log(files);
+
+  await files.map(([src, dest]) => fs.copy(src, dest));
+  console.log('finish copy');
 });
