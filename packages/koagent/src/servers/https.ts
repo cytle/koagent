@@ -9,7 +9,7 @@ export class HttpsServer extends HttpServer{
   }
   public async create() {
     const serverCrt = await this.certService.getForHost(
-      'internal_https_server',
+      'koagent-https-server',
     );
     this.server = https.createServer({
       SNICallback: async (servername, cb) => {
@@ -19,6 +19,5 @@ export class HttpsServer extends HttpServer{
       cert: serverCrt.cert,
       key: serverCrt.key,
     });
-    return this;
   }
 }

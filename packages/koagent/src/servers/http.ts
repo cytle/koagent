@@ -5,23 +5,27 @@ import { IHttpServer } from './interfaces';
 export class HttpServer implements IHttpServer {
   server: net.Server;
   constructor() {}
-  public onRequest(handler) {
-    this.server.on('request', handler);
-  }
-  public onConnect(handler) {
-    this.server.on('connect', handler);
-  }
-  public onUpgrade(handler) {
-    this.server.on('upgrade', handler);
-  }
-  public onError(handler) {
-    this.server.on('upgrade', handler);
-  }
-  public listen(port) {
-    this.server.listen(port, '0.0.0.0');
-  }
-  public create(): Promise<IHttpServer> | IHttpServer {
-    this.server = http.createServer();
+  public onRequest(handle) {
+    this.server.on('request', handle);
     return this;
+  }
+  public onConnect(handle) {
+    this.server.on('connect', handle);
+    return this;
+  }
+  public onUpgrade(handle) {
+    this.server.on('upgrade', handle);
+    return this;
+  }
+  public onError(handle) {
+    this.server.on('error', handle);
+    return this;
+  }
+  public listen(...args) {
+    this.server.listen(...args);
+    return this;
+  }
+  public create() {
+    this.server = http.createServer();
   }
 }
