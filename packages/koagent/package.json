@@ -1,6 +1,6 @@
 {
   "name": "koagent",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "get-port": "^4.0.0",
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
-    "koagent-certificate": "^0.1.4",
+    "koagent-certificate": "^0.1.7",
     "koagent-http-proxy": "^0.1.6",
     "lodash": "^4.17.11",
     "request": "^2.88.0"
