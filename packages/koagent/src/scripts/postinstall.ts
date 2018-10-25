@@ -13,7 +13,9 @@ Promise.resolve().then(async () => {
       path.join(certifacateStoragePath, name),
     ]);
 
-  console.log(files);
+  files.forEach(([src, dest]) => {
+    console.log(src, '=>', dest);
+  });
 
   await files.map(([src, dest]) => fs.copy(src, dest));
   console.log('finish copy');
