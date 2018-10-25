@@ -6,8 +6,6 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
-    "build": "rimraf dist && tsc",
-    "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",

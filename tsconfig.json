@@ -33,7 +33,8 @@
     "lib": [
         "dom",
         "es2017"
-    ]
+    ],
+    "outDir": "./dist",
   },
   "exclude": [
     "cmd",
