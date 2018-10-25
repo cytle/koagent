@@ -7,7 +7,7 @@
     "start": "ts-node src/index",
     "build": "rimraf dist && tsc",
     "reset": "ts-node scripts/postinstall",
-    "postinstall": "node ./dist/scripts/postinstall.js",
+    "copyCert": "node ./dist/scripts/copyCert.js",
     "prepublishOnly": "npm run build",
     "test": "ts-node src/request"
   },

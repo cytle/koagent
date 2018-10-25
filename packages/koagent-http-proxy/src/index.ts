@@ -39,7 +39,7 @@ export default (options?: HttpProxy.ServerOptions) => {
     res.on('close', () => {
       reject(new Error(`Http response closed while proxying ${req.url}`));
     });
-    res.on('end', () => {
+    res.on('finish', () => {
       resolve();
     });
 
@@ -48,6 +48,7 @@ export default (options?: HttpProxy.ServerOptions) => {
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(target.protocol),
       prependPath: false,
+      followRedirects: false,
     };
 
     proxy.web(req, res, proxyOptions, reject);

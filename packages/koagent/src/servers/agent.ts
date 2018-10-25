@@ -1,4 +1,4 @@
-import { getPort } from 'get-port';
+import getPort from 'get-port';
 import debug from 'debug';
 import http from 'http';
 import https from 'https';
