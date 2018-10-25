@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src/index",
+    "build:scripts": "tsc src/scripts/postinstall.ts --outFile src/postinstall.js",
     "build": "rimraf dist && tsc",
     "postinstall": "node ./scripts/postinstall.js",
     "prepublishOnly": "npm run build",

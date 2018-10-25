@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import config from '../src/config';
+import config from '../config';
 
 Promise.resolve().then(async () => {
   await fs.remove(config.certifacateStoragePath);
