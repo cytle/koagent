@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/index",
     "build": "rimraf dist && tsc",
-    "postinstall": "node ./dist/scripts/postinstall.js",
+    "postinstall": "node ./scripts/postinstall.js",
     "prepublishOnly": "npm run build",
     "test": "ts-node src/request"
   },
