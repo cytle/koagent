@@ -16,7 +16,7 @@ const isWebsocketProtocol = (protocol: string | undefined) => isWS.test(protocol
  * 使用http-proxy转发请求
  */
 
-export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
+export default (options?: HttpProxy.ServerOptions) => {
   const proxy = new HttpProxy(options);
 
   return ({ req, res }: Koa.Context) =>
@@ -45,9 +45,6 @@ export default (koagentCtx, options?: HttpProxy.ServerOptions) => {
 
     const proxyOptions = {
       target,
-      ssl: isSecureProtocol(target.protocol)
-        ? await koagentCtx.certService.getForHost(target.host)
-        : undefined,
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(target.protocol),
       prependPath: false,

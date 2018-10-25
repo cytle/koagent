@@ -8,14 +8,14 @@ import { CertificateService } from './CertificateService';
 import { CertificateStorage } from './CertificateStorage';
 
 export default (
-  koangetCtx,
+  koagent,
 ) => {
   const selfRouter = new KoaRouter();
   selfRouter.get('/rootCA', async (ctx) => {
     ctx.set('Content-disposition', 'attachment;filename=koagentCA.crt');
-    ctx.body = (await koangetCtx.certService.getRoot()).cert;
+    ctx.body = (await koagent.certService.getRoot()).cert;
   });
-  koangetCtx.router.use('/certificate', selfRouter.routes(), selfRouter.allowedMethods());
+  koagent.managerRouter.use('/certificate', selfRouter.routes(), selfRouter.allowedMethods());
   return (_ctx, next) => next();
 };
 
