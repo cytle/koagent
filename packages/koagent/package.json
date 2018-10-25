@@ -1,23 +1,28 @@
 {
   "name": "koagent",
-  "version": "0.1.4",
+  "version": "0.1.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src/index",
     "build": "rimraf dist && tsc",
+    "reset": "ts-node scripts/postinstall",
+    "copyCert": "node ./dist/scripts/copyCert.js",
     "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node src/request"
   },
   "keywords": [],
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "dependencies": {
+    "debug": "^4.1.0",
+    "fs-extra": "^7.0.0",
     "get-port": "^4.0.0",
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
-    "koagent-certificate": "^0.1.4",
-    "koagent-http-proxy": "^0.1.2",
-    "lodash": "^4.17.11"
+    "koagent-certificate": "^0.1.10",
+    "koagent-http-proxy": "^0.1.10",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0"
   },
   "license": "ISC",
   "devDependencies": {

@@ -7,7 +7,7 @@ export class CertificateStorage implements ICertificateStorage {
   private cache: LRUCache.Cache<string, ICertificateModel>;
   private storagePath: string;
   private encoding: string;
-  constructor(options: ICertificateStorageOptions, lruCacheOptions: void | LRUCache.Options) {
+  constructor(options: ICertificateStorageOptions, lruCacheOptions?: LRUCache.Options) {
     // private storagePath: string, private encoding: string,
     fs.ensureDir(options.storagePath);
     this.storagePath = options.storagePath;

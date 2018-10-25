@@ -1,10 +1,11 @@
 {
   "name": "koagent-http-proxy",
-  "version": "0.1.2",
+  "version": "0.1.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && tsc",
+    "dev": "rimraf dist && tsc --watch",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +14,7 @@
     "@types/http-proxy": "^1.16.2",
     "@types/koa": "^2.0.46",
     "@types/lodash": "^4.14.117",
-    "@types/node": "^10.12.0",
-    "koa": "^2.5.3"
+    "@types/node": "^10.12.0"
   },
   "dependencies": {
     "http-proxy": "^1.17.0",

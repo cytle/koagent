@@ -1,25 +1,32 @@
-import { HttpsServer } from './servers';
+import debug from 'debug';
+import Koagent from './Koagent';
+import httpProxy from 'koagent-http-proxy';
 import certificate from 'koagent-certificate';
-import KoaRouter from 'koa-router';
-// import getPort from 'get-port';
-import { connectHandler } from './handlers/connect';
-import createKoaApp from './createKoaApp';
-import config from './config';
+import logger from './middlewares/logger';
+
+debug.enable('*');
+
+const log = debug('koagent');
 
 Promise.resolve().then(async () => {
-  const router = new KoaRouter();
-  const app = createKoaApp(router);
+  const koagent = await Koagent.create();
 
-  certificate(app, router, {
-    storagePath: config.certifacateStoragePath,
-    rootKey: config.certifacateRootKey,
+  koagent.proxyApp.use(certificate(koagent));
+  koagent.proxyApp.use(logger());
+  koagent.proxyApp.use(httpProxy());
+
+  koagent.managerApp.listen(3001, () => {
+    log('manager listen', 3001);
+  });
+  koagent.proxyServer.listen(3000, () => {
+    log('proxy listen', 3000);
   });
 
-  const server = new HttpsServer();
-  await server.create();
-  server.onRequest(app.callback());
-  server.onConnect(connectHandler);
-  server.listen(3000);
-});
+  koagent.proxyApp.on('error', (err) => {
+    log('proxyApp error', err);
+  });
 
-// http.createServer(app.callback()).on('connect', connect).listen(3000, '0.0.0.0');
+  koagent.managerApp.on('error', (err) => {
+    log('managerApp error', err);
+  });
+});
