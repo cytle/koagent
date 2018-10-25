@@ -1,3 +1,4 @@
+import os from 'os';
 import { promisfy } from 'promisfy';
 import parseDomain from 'parse-domain';
 import pem from 'pem';
@@ -69,10 +70,10 @@ export class CertificateService implements ICertificateService {
       country: 'CN',
       state: 'ZheJiang',
       locality: 'HangZhou',
-      organization: 'koagent',
-      organizationUnit: 'koagent',
-      altNames: ['koagent'],
-      commonName: 'koagent',
+      organization: 'Koagent',
+      organizationUnit: 'Koagent',
+      altNames: ['Koagent'],
+      commonName: `Koagent(${os.hostname()})`,
       days: 365 * 10 + 3,
       selfSigned: true,
     });
