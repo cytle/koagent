@@ -30,7 +30,7 @@ interface Project {
   desc?: string;
 }
 
-class DifreProxyLocalMananger {
+export default class DifreProxyLocalMananger {
   private projects: Project[] = [];
   private forwardProjects: string[] = [];
   private configStore: Configstore;
@@ -44,13 +44,13 @@ class DifreProxyLocalMananger {
   needForward(projectName) {
     return this.forwardProjects.indexOf(projectName) !== -1;
   }
-  forward(projectName) {
+  addForward(projectName) {
     if (!this.needForward(projectName)) {
       this.forwardProjects.push(projectName);
       this.store();
     }
   }
-  dontForward(projectName) {
+  removeForward(projectName) {
     if (this.needForward(projectName)) {
       this.forwardProjects = this.forwardProjects
         .filter(vo => vo !== projectName);
@@ -85,18 +85,18 @@ class DifreProxyLocalMananger {
       name,
     }));
   }
+  public getProjects() {
+    return this.projects.map(vo => ({
+      ...vo,
+      needForward: this.needForward(vo.name),
+    }));
+  }
+  public forward() {
+    return compose([
+      ({ req }: Koa.Context) => {
+        req.url = this.match(req);
+      },
+      koagentHttpProxy(),
+    ]);
+  }
 }
-
-/**
- * 使用http-proxy转发请求
- */
-
-export default () => {
-  const mananger = new DifreProxyLocalMananger();
-  return compose([
-    ({ req }: Koa.Context) => {
-      req.url = mananger.match(req);
-    },
-    koagentHttpProxy(),
-  ]);
-};
