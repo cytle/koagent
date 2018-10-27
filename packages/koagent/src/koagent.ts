@@ -1,11 +1,8 @@
-import debug from 'debug';
 import { KoangetServer } from './servers';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
 import defaultConfig from './config';
 import { createCertificateService, ICertificateService } from 'koagent-certificate';
-
-debug.enable('*');
 
 export default class Koagent {
   public static async create() {
