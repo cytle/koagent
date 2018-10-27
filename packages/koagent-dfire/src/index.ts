@@ -26,6 +26,14 @@ Promise.resolve().then(async () => {
   router.get('/proxyLocal', (ctx) => {
     ctx.body = proxyLocalMananger.getProjects();
   });
+  router.put('/proxyLocal/forward/:projectName', (ctx) => {
+    proxyLocalMananger.addForward(ctx.params.projectName);
+    ctx.response.status = 200;
+  });
+  router.delete('/proxyLocal/forward/:projectName', (ctx) => {
+    proxyLocalMananger.removeForward(ctx.params.projectName);
+    ctx.response.status = 200;
+  });
 
   app.use(router.routes());
   app.listen(3001, () => {
