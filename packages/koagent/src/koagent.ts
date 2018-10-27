@@ -33,7 +33,4 @@ export default class Koagent {
     this.proxyServer.onRequest(this.proxyApp.callback());
     this.proxyServer.onError(this.proxyApp.onerror);
   }
-  use(middleware) {
-    this.proxyApp.use(middleware(this));
-  }
 }
