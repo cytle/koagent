@@ -1,11 +1,16 @@
 import Koagent from './Koagent';
-import httpProxy from 'koagent-http-proxy';
-import certificate from 'koagent-certificate';
-import logger from './middlewares/logger';
+import koagentHttpProxy from 'koagent-http-proxy';
+import koagentCertificate from 'koagent-certificate';
+import { KoangetServer } from './servers';
+import koagentLogger from './middlewares/logger';
 
-export const koagentHttpProxy = httpProxy;
-export const koagentLogger = logger;
-export const koagentCertificate = certificate;
+export {
+  KoangetServer,
+  koagentLogger,
+  koagentCertificate,
+  koagentHttpProxy,
+};
+
 export default Koagent;
 
 // debug.enable('*');
