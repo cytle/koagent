@@ -1,6 +1,6 @@
 {
   "name": "koagent-server",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,8 +12,8 @@
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "dependencies": {
     "debug": "^4.1.0",
-    "koagent-certificate": "^0.1.10",
-    "get-port": "^4.0.0"
+    "get-port": "^4.0.0",
+    "koagent-certificate": "^0.1.10"
   },
   "license": "ISC",
   "devDependencies": {
