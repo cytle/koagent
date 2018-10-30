@@ -1,0 +1,22 @@
+{
+  "name": "koagent-server",
+  "version": "0.1.11",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index",
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
+  "dependencies": {
+    "debug": "^4.1.0",
+    "koagent-certificate": "^0.1.10",
+    "get-port": "^4.0.0"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.12.0"
+  }
+}
