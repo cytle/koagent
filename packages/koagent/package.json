@@ -21,6 +21,7 @@
     "koa-router": "^7.4.0",
     "koagent-certificate": "^0.1.10",
     "koagent-http-proxy": "^0.1.10",
+    "koagent-server": "^0.1.12",
     "lodash": "^4.17.11",
     "request": "^2.88.0"
   },

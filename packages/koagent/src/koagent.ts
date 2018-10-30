@@ -1,4 +1,4 @@
-import { KoangetServer } from './servers';
+import KoangetServer from 'koagent-server';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
 import defaultConfig from './config';
@@ -13,7 +13,7 @@ export default class Koagent {
   public proxyApp: Koa;
   public managerApp: Koa;
   public managerRouter: KoaRouter;
-  public proxyServer: KoangetServer;
+  public proxyServer;
   public certService: ICertificateService;
   constructor() {
     this.certService = createCertificateService({
