@@ -13,7 +13,7 @@ export default class Koagent {
   public proxyApp: Koa;
   public managerApp: Koa;
   public managerRouter: KoaRouter;
-  public proxyServer;
+  public proxyServer: KoangetServer;
   public certService: ICertificateService;
   constructor() {
     this.certService = createCertificateService({
