@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
+    "strict": true,
     "rootDir": "./src",
     "outDir": "dist"
   }

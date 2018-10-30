@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import HelloWorld from '@/pages/HelloWorld';
 import Monitor from '@/pages/Monitor';
 import ReverseProxy from '@/pages/ReverseProxy';
+import difrePages from '../../../koagent-dfire/pages';
 
 Vue.use(Router);
 
@@ -32,5 +33,6 @@ export default new Router({
         title: 'ReverseProxy',
       },
     },
+    difrePages.routes,
   ],
 });

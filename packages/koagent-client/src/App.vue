@@ -27,7 +27,7 @@ export default {
       return this.$router.options.routes.map(vo => ({
         path: vo.path,
         name: vo.name,
-        title: vo.meta.title,
+        title: (vo.meta && vo.meta.title) || vo.name,
       }));
     },
   },

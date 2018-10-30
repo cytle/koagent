@@ -20,8 +20,9 @@ export default async (koagent: Koagent) => {
   });
   localProxyServer.onRequest(localProxyApp.callback());
   localProxyServer.onError(localProxyApp.onerror);
-  localProxyServer.listen(3000, () => {
-    log('proxy listen', 3000);
+  const localProxyServerPort = 30001;
+  localProxyServer.listen(localProxyServerPort, () => {
+    log('proxy listen', localProxyServerPort);
   });
 
   const router = new KoaRouter();

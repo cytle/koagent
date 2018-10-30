@@ -22,7 +22,9 @@ export default class Koagent {
     });
     this.proxyApp = new Koa();
     this.managerApp = new Koa();
-    this.managerRouter = new KoaRouter();
+    this.managerRouter = new KoaRouter({
+      prefix: '/api',
+    });
     this.managerApp.use(this.managerRouter.routes());
   }
   async init() {

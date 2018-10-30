@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node src/index",
+    "start": "ts-node src/app",
     "build": "rimraf dist && tsc",
     "reset": "ts-node scripts/postinstall",
     "copyCert": "node ./dist/scripts/copyCert.js",
