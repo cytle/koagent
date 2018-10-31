@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '~/pages/HelloWorld';
-import Monitor from '~/pages/Monitor';
-import ReverseProxy from '~/pages/ReverseProxy';
+import HelloWorld from '../pages/HelloWorld';
+import Monitor from '../pages/Monitor';
+import ReverseProxy from '../pages/ReverseProxy';
 
 Vue.use(Router);
 

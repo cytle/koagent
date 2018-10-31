@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <ul>
+      <li v-for="rule of rules" :key="rule">{{ rule }}</li>
+    </ul>
   </div>
 </template>
 
@@ -12,7 +15,7 @@ export default {
   name: 'ReverseProxy',
   data() {
     return {
-      msg: 'ReverseProxy',
+      msg: 'ReverseProxy123213',
     };
   },
   beforeCreate() {

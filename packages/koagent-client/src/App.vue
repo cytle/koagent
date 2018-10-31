@@ -24,6 +24,8 @@ export default {
   name: 'App',
   computed: {
     menu() {
+      console.log(this.$router);
+
       return this.$router.options.routes.map(vo => ({
         path: vo.path,
         name: vo.name,

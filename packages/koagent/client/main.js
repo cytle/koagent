@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 // import koagentClient from 'koagent-client';
-import '../../koagent-client/dist/index.css';
-import koagentClient from '../../koagent-client';
+// import '../../koagent-client/dist/index.css';
+import koagentClient from 'koagent-client/src';
 import koagentDfire from '../../koagent-dfire/dist/pages';
 
 console.log(koagentDfire);
