@@ -1,6 +1,6 @@
 {
   "name": "koagent-dfire",
-  "version": "0.1.13-y.2",
+  "version": "0.1.13-y.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -32,9 +32,9 @@
     "debug": "^4.1.0",
     "http-proxy": "^1.17.0",
     "koa-compose": "^4.1.0",
-    "koagent": "^0.1.13-y.2",
-    "koagent-client": "^0.1.13-y.2",
-    "koagent-server": "^0.1.13-y.2",
+    "koagent": "^0.1.13-y.3",
+    "koagent-client": "^0.1.13-y.3",
+    "koagent-server": "^0.1.13-y.3",
     "lodash": "^4.17.11",
     "vue": "^2.5.17",
     "vuex": "^3.0.1"
