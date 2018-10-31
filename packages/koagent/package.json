@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src/app",
-    "build:client": "parcel client/index.html",
+    "build:client": "parcel build client/index.html -d dist/client",
+    "dev:client": "parcel client/index.html --bundle-node-modules",
     "build": "rimraf dist && tsc",
     "reset": "ts-node scripts/postinstall",
     "copyCert": "node ./dist/scripts/copyCert.js",
@@ -15,6 +16,7 @@
   "keywords": [],
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "debug": "^4.1.0",
     "fs-extra": "^7.0.0",
     "get-port": "^4.0.0",
@@ -25,7 +27,8 @@
     "koagent-http-proxy": "^0.1.10",
     "koagent-server": "^0.1.13-y.1",
     "lodash": "^4.17.11",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "vue": "^2.5.17"
   },
   "license": "ISC",
   "devDependencies": {
@@ -33,7 +36,9 @@
     "@types/koa-router": "^7.0.32",
     "@types/lodash": "^4.14.117",
     "@types/node": "^10.12.0",
-    "parcel-bundler": "^1.10.3",
     "ts-node": "^7.0.1"
+  },
+  "alias": {
+    "vue": "vue"
   }
 }
