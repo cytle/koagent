@@ -13,7 +13,7 @@ Promise.resolve().then(async () => {
   koagent.use(koagentCertificate);
   koagent.use(koagentLogger);
   koagent.proxyApp.use(koagentHttpProxy());
-
+  console.log(koagent.managerRouter.stack.map(i => i.path));
   koagent.managerApp.listen(3001, () => {
     log('manager listen', 3001);
   });

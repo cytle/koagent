@@ -26,7 +26,7 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchProjects({ commit }) {
-      const { data } = await axios.get(`/api/localProxy`);
+      const { data } = await axios.get(`/api/localProxy/projects`);
       commit('UPDATE_PROJECTS', data);
     },
     async forward({ commit }, projectName) {
