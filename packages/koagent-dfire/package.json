@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build:pages": "cd pages && rollup -c rollup.config.js",
-    "dev:pages": "cd pages && rollup -c rollup.config.js -w",
+    "build:pages": "parcel build pages/routes.js --target node",
+    "dev:pages": "parcel pages/routes.js --target node",
     "dev": "rimraf dist && tsc --watch",
     "build": "rimraf dist && tsc && npm run build:pages",
     "start": "ts-node src/index",
@@ -19,13 +19,11 @@
     "@types/lodash": "^4.14.117",
     "@types/node": "^10.12.0",
     "@types/vue": "^2.0.0",
-    "rollup": "^0.66.6",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-vue": "^4.3.2",
+    "@vue/component-compiler-utils": "^2.3.0",
+    "cssnano": "^4.1.7",
+    "rimraf": "^2.6.2",
     "ts-node": "^7.0.1",
+    "typescript": "^3.1.4",
     "vue-template-compiler": "^2.5.17"
   },
   "dependencies": {

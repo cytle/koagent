@@ -347,10 +347,6 @@ deep-eql@^3.0.1:
   dependencies:
     type-detect "^4.0.0"
 
-deep-equal@~0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npmjs.org/deep-equal/-/deep-equal-0.0.0.tgz#99679d3bbd047156fcd450d3d01eeb9068691e83"
-
 deep-equal@~1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
@@ -358,10 +354,6 @@ deep-equal@~1.0.1:
 deepmerge@^1.2.0:
   version "1.5.2"
   resolved "https://registry.npmjs.org/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
-
-defined@~0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npmjs.org/defined/-/defined-0.0.0.tgz#f35eea7d705e933baf13b2f03b3f83d921403b3e"
 
 delayed-stream@~1.0.0:
   version "1.0.0"
@@ -402,9 +394,10 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-element-ui@^2.4.8:
+element-ui@^2.4.9:
   version "2.4.9"
   resolved "https://registry.npmjs.org/element-ui/-/element-ui-2.4.9.tgz#b7c9c96da06f182c6a4fe7f508b8c8ef1a516732"
+  integrity sha512-PO5FsPiemYEJxPzzP3fT7Dhy/MX7zVqpJ74Rp6p8nBH604E7ruwT0VkrGX4K4cgAXRfgo4BK3O03m4RbWYUebA==
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -412,18 +405,6 @@ element-ui@^2.4.8:
     normalize-wheel "^1.0.1"
     resize-observer-polyfill "^1.5.0"
     throttle-debounce "^1.0.1"
-
-element@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/element/-/element-0.1.4.tgz#1642279061328a574a692e0e5184e62c180a6685"
-  dependencies:
-    ent "0.0.5"
-    global "~2.0.7"
-    lru-cache "~2.3.0"
-
-ent@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npmjs.org/ent/-/ent-0.0.5.tgz#98b4498d8a89d7b8d78af7aaa0714675783c7b4e"
 
 error-inject@^1.0.0:
   version "1.0.0"
@@ -535,12 +516,17 @@ glob@7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-global@~2.0.7:
-  version "2.0.7"
-  resolved "https://registry.npmjs.org/global/-/global-2.0.7.tgz#d43a9c3d1ec7915f645d8e0eb0ac60010e9e06cd"
+glob@^7.0.5:
+  version "7.1.3"
+  resolved "https://registry.npmjs.org/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
   dependencies:
-    min-document "~0.2.2"
-    process "~0.5.1"
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
 
 got@^8.0.1:
   version "8.3.2"
@@ -729,10 +715,6 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonify@~0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npmjs.org/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
-
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://registry.npmjs.org/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -826,16 +808,17 @@ koagent-certificate@^0.1.10:
     pem "^1.13.1"
     promisfy "^1.1.4"
 
-koagent-client@^0.1.13-y.1:
-  version "0.1.13-y.1"
-  resolved "https://registry.npmjs.org/koagent-client/-/koagent-client-0.1.13-y.1.tgz#c441379df7b1489afac6f8fb594305830ec7f542"
+koagent-client@^0.1.13-y.2:
+  version "0.1.13-y.2"
+  resolved "https://registry.npmjs.org/koagent-client/-/koagent-client-0.1.13-y.2.tgz#2d1e40591c4ea9609a0160d97d5abc93419396f7"
+  integrity sha512-168aYdA0V1XN4jtVRVFP+8SraSiLPs7xupnCM+UqgiaycIXgts2zyfoPv8+7QC4oWt3VTUSTVWgrGjWbts/LFw==
   dependencies:
     axios "^0.18.0"
-    element "^0.1.4"
-    element-ui "^2.4.8"
+    element-ui "^2.4.9"
     lodash "^4.17.11"
     normalize.css "^8.0.0"
-    vue "^2.5.2"
+    vue "^2.5.17"
+    vue-hot-reload-api "^2.3.1"
     vue-i18n "^8.3.0"
     vue-router "^3.0.1"
     vuex "^3.0.1"
@@ -847,9 +830,10 @@ koagent-http-proxy@^0.1.10:
     http-proxy "^1.17.0"
     lodash "^4.17.11"
 
-koagent-server@^0.1.13-y.1:
-  version "0.1.13-y.1"
-  resolved "https://registry.npmjs.org/koagent-server/-/koagent-server-0.1.13-y.1.tgz#d939a4c95ee8a6476d288bd506a9de09ac1ba595"
+koagent-server@^0.1.13-y.2:
+  version "0.1.13-y.2"
+  resolved "https://registry.npmjs.org/koagent-server/-/koagent-server-0.1.13-y.2.tgz#00786194cdf3be27cd08cd94bd5e998b1fb9f20f"
+  integrity sha512-lWgrWib37UhRSXuex2Bmx6J+pBPsx6mjQUU45CA0Zik9ITmlpjboEIiSnaF/ZfTTruAVBCxUSHSmVE5oenDy2w==
   dependencies:
     debug "^4.1.0"
     get-port "^4.0.0"
@@ -873,10 +857,6 @@ lru-cache@^4.1.3:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
-
-lru-cache@~2.3.0:
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-2.3.1.tgz#b3adf6b3d856e954e2c390e6cef22081245a53d6"
 
 make-error@^1.1.1:
   version "1.3.5"
@@ -911,12 +891,6 @@ mime-types@^2.1.12, mime-types@^2.1.18, mime-types@~2.1.18, mime-types@~2.1.19:
 mimic-response@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
-
-min-document@~0.2.2:
-  version "0.2.8"
-  resolved "https://registry.npmjs.org/min-document/-/min-document-0.2.8.tgz#f3620cf5603611155cb9416d0ab5576b16d53de3"
-  dependencies:
-    tape "~1.0.2"
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -1079,10 +1053,6 @@ process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
 
-process@~0.5.1:
-  version "0.5.2"
-  resolved "https://registry.npmjs.org/process/-/process-0.5.2.tgz#1638d8a8e34c2f440a91db95ab9aeb677fc185cf"
-
 promisfy@^1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/promisfy/-/promisfy-1.1.4.tgz#c7f2562dd18992a2dc79cf25093a0a56f5b2abbf"
@@ -1170,6 +1140,13 @@ responselike@1.0.2:
   dependencies:
     lowercase-keys "^1.0.0"
 
+rimraf@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
+  integrity sha512-lreewLK/BlghmxtfH36YYVg1i8IAce4TI7oao75I1g245+6BctqTVQiBP3YUJ9C6DQOXJmkYR9X9fCLtCOJc5w==
+  dependencies:
+    glob "^7.0.5"
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
@@ -1233,22 +1210,9 @@ supports-color@4.4.0:
   dependencies:
     has-flag "^2.0.0"
 
-tape@~1.0.2:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/tape/-/tape-1.0.4.tgz#e2e8e5c6dd3f00fdc2a5e4514f62fc221e59f9c4"
-  dependencies:
-    deep-equal "~0.0.0"
-    defined "~0.0.0"
-    jsonify "~0.0.0"
-    through "~2.3.4"
-
 throttle-debounce@^1.0.1:
   version "1.1.0"
   resolved "https://registry.npmjs.org/throttle-debounce/-/throttle-debounce-1.1.0.tgz#51853da37be68a155cb6e827b3514a3c422e89cd"
-
-through@~2.3.4:
-  version "2.3.8"
-  resolved "http://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 timed-out@^4.0.1:
   version "4.0.1"
@@ -1299,6 +1263,11 @@ type-is@^1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
+typescript@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-3.1.4.tgz#c74ef7b3c2da65beff548b903022cb8c3cd997ed"
+  integrity sha512-JZHJtA6ZL15+Q3Dqkbh8iCUmvxD3iJ7ujXS+fVkKnwIVAdHc5BJTDNM0aTrnr2luKulFjU7W+SRhDZvi66Ru7Q==
+
 universalify@^0.1.0:
   version "0.1.2"
   resolved "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
@@ -1337,6 +1306,11 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vue-hot-reload-api@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"
+  integrity sha512-AA86yKZ5uOKz87/q1UpngEXhbRkaYg1b7HMMVRobNV1IVKqZe8oLIzo6iMocVwZXnYitlGwf2k4ZRLOZlS8oPQ==
+
 vue-i18n@^8.3.0:
   version "8.3.0"
   resolved "https://registry.npmjs.org/vue-i18n/-/vue-i18n-8.3.0.tgz#8e0b69f036c0e818c2c48368a313680175e30f7e"
@@ -1345,7 +1319,7 @@ vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
 
-vue@^2.5.17, vue@^2.5.2:
+vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.npmjs.org/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
 

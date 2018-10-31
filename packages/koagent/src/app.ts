@@ -1,6 +1,6 @@
 import debug from 'debug';
 import Koagent, { koagentCertificate, koagentHttpProxy, koagentLogger } from './index';
-import koagentDfire from '../../koagent-dfire';
+// import koagentDfire from '../../koagent-dfire';
 
 debug.enable('*');
 
@@ -9,7 +9,7 @@ const log = debug('koagent');
 Promise.resolve().then(async () => {
   const koagent = await Koagent.create();
 
-  koagent.proxyApp.use(await koagentDfire(koagent));
+  // koagent.proxyApp.use(await koagentDfire(koagent));
   koagent.use(koagentCertificate);
   koagent.use(koagentLogger);
   koagent.proxyApp.use(koagentHttpProxy());
