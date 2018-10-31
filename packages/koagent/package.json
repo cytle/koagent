@@ -16,6 +16,7 @@
   "keywords": [],
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "debug": "^4.1.0",
     "fs-extra": "^7.0.0",

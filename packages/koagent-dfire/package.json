@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build:pages": "parcel build pages/routes.js --target node",
-    "dev:pages": "parcel pages/routes.js --target node",
+    "build:pages": "parcel build pages/index.js -d dist/pages",
+    "dev:pages": "parcel watch pages/index.js -d dist/pages",
     "dev": "rimraf dist && tsc --watch",
     "build": "rimraf dist && tsc && npm run build:pages",
     "start": "ts-node src/index",

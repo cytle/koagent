@@ -1,10 +1,7 @@
 import KoaRouter from 'koa-router';
-import debug from 'debug';
 import Koagent from 'koagent';
 import DifreProxyLocalMananger from './dfireProxyLocal';
 import DfireProxyLocalServer from './DfireProxyLocalServer';
-
-debug.enable('*');
 
 export default async (koagent: Koagent) => {
   const proxyLocalMananger = new DifreProxyLocalMananger();

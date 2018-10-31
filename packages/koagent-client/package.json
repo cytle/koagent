@@ -4,8 +4,10 @@
   "description": "koagent client",
   "author": "炒饭 <chaofan@2dfire.com>",
   "scripts": {
-    "build": "rimraf dist && parcel build src/index.js --target node",
+    "dev": "parcel watch src/index.js",
+    "build": "rimraf dist && parcel build src/index.js",
     "start": "parcel src/index.html",
+    "build:client": "parcel build src/index.html",
     "prepublishOnly": "npm run build"
   },
   "main": "dist/index.js",
