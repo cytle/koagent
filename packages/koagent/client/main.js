@@ -1,3 +1,3 @@
 import koagentClient from 'koagent-client';
 
-koagentClient.app.$mount('#app');
+// koagentClient.app.$mount('#app');
