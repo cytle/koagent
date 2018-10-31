@@ -1,8 +1,5 @@
-import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
-
-Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -23,32 +20,28 @@ export default new Vuex.Store({
       }
     },
     UPDATE_PROJECTS(state, projects) {
-      Vue.set(state, 'projects', projects);
-      console.log(state);
-
+      state.projects.splice(0, state.projects.length);
+      state.projects.push(...projects);
     },
   },
   actions: {
     async fetchProjects({ commit }) {
       const { data } = await axios.get(`/api/localProxy`);
-
-      console.log(data);
-
       commit('UPDATE_PROJECTS', data);
     },
     async forward({ commit }, projectName) {
       commit('UPDATE_PROJECT_LOADING', { projectName, loading: true });
       try {
-        await axios.put(`/localProxy/forward/${projectName}`);
+        await axios.put(`/api/localProxy/forward/${projectName}`);
         commit('UPDATE_PROJECT_FORWARD', { projectName, needForward: true });
       } finally {
         commit('UPDATE_PROJECT_LOADING', { projectName, loading: false });
       }
     },
-    async dontForward({}, projectName) {
+    async dontForward({ commit }, projectName) {
       commit('UPDATE_PROJECT_LOADING', { projectName, loading: true });
       try {
-        await axios.delete(`/localProxy/forward/${projectName}`);
+        await axios.delete(`/api/localProxy/forward/${projectName}`);
         commit('UPDATE_PROJECT_FORWARD', { projectName, needForward: false });
       } finally {
         commit('UPDATE_PROJECT_LOADING', { projectName, loading: false });

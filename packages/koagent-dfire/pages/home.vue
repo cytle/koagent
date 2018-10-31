@@ -12,6 +12,7 @@
       <template slot-scope="scope">
         <el-switch
           @change="toggleForward(scope.row.name, !scope.row.needForward)"
+          :value="scope.row.needForward"
           :disabled="scope.row.loading"
         />
       </template>
