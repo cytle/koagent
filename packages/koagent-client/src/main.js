@@ -12,11 +12,16 @@ Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
 
-/* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   store,
   router,
   components: { App },
   template: '<App/>',
 });
+
+export default {
+  router,
+  store,
+  app,
+};

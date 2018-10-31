@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
+  "main": "dist/static/js/app.js",
   "dependencies": {
     "axios": "^0.18.0",
     "element": "^0.1.4",
@@ -73,7 +74,8 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "engines": {
     "node": ">= 6.0.0",

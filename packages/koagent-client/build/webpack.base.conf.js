@@ -8,9 +8,6 @@ const vueLoaderConfig = require('./vue-loader.conf');
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
-function currentModule(name) {
-  return path.join(__dirname, '..', 'node_modules', name);
-}
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
@@ -38,9 +35,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      axios$: currentModule('axios'),
-      vue$: currentModule('vue/dist/vue.esm.js'),
-      vuex$: currentModule('vuex/dist/vuex.esm.js'),
+      vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     },
   },
