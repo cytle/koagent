@@ -1,6 +1,6 @@
 {
   "name": "koagent-client",
-  "version": "0.1.13-y.1",
+  "version": "0.1.13-y.2",
   "description": "koagent client",
   "author": "炒饭 <chaofan@2dfire.com>",
   "scripts": {
