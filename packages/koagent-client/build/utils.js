@@ -1,9 +1,10 @@
+const notifier = require('node-notifier');
 const path = require('path');
 const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const packageConfig = require('../package.json');
 
-exports.assetsPath = function (_path) {
+exports.assetsPath = function assetsPath(_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory;
@@ -11,9 +12,7 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path);
 };
 
-exports.cssLoaders = function (options) {
-  options = options || {};
-
+exports.cssLoaders = function cssLoaders(options = {}) {
   const cssLoader = {
     loader: 'css-loader',
     options: {
@@ -65,35 +64,25 @@ exports.cssLoaders = function (options) {
 };
 
 // Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
-  const output = [];
+exports.styleLoaders = function styleLoaders(options) {
   const loaders = exports.cssLoaders(options);
 
-  for (const extension in loaders) {
-    const loader = loaders[extension];
-    output.push({
-      test: new RegExp(`\\.${extension}$`),
-      use: loader,
-    });
-  }
-
-  return output;
+  return Object.keys(loaders).map(extension => ({
+    test: new RegExp(`\\.${extension}$`),
+    use: loaders[extension],
+  }));
 };
 
-exports.createNotifierCallback = () => {
-  const notifier = require('node-notifier');
+exports.createNotifierCallback = () => (severity, errors) => {
+  if (severity !== 'error') return;
 
-  return (severity, errors) => {
-    if (severity !== 'error') return;
+  const error = errors[0];
+  const filename = error.file && error.file.split('!').pop();
 
-    const error = errors[0];
-    const filename = error.file && error.file.split('!').pop();
-
-    notifier.notify({
-      title: packageConfig.name,
-      message: `${severity}: ${error.name}`,
-      subtitle: filename || '',
-      icon: path.join(__dirname, 'logo.png'),
-    });
-  };
+  notifier.notify({
+    title: packageConfig.name,
+    message: `${severity}: ${error.name}`,
+    subtitle: filename || '',
+    icon: path.join(__dirname, 'logo.png'),
+  });
 };

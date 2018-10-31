@@ -13,7 +13,6 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 const app = new Vue({
-  el: '#app',
   store,
   router,
   components: { App },

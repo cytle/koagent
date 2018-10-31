@@ -15,13 +15,14 @@ spinner.start();
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), (err) => {
   if (err) throw err;
-  webpack(webpackConfig, (err, stats) => {
+  webpack(webpackConfig, (err1, stats) => {
     spinner.stop();
-    if (err) throw err;
+    if (err1) throw err1;
     process.stdout.write(`${stats.toString({
       colors: true,
       modules: false,
-      children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+      // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+      children: false,
       chunks: false,
       chunkModules: false,
     })}\n\n`);
