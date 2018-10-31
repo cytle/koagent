@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/app",
     "build:client": "parcel build client/index.html -d dist/client",
-    "dev:client": "parcel client/index.html --bundle-node-modules",
+    "dev:client": "parcel client/index.html",
     "build": "rimraf dist && tsc",
     "reset": "ts-node scripts/postinstall",
     "copyCert": "node ./dist/scripts/copyCert.js",
@@ -37,8 +37,5 @@
     "@types/lodash": "^4.14.117",
     "@types/node": "^10.12.0",
     "ts-node": "^7.0.1"
-  },
-  "alias": {
-    "vue": "vue"
   }
 }
