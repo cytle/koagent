@@ -5,6 +5,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    a: 123123,
+    menu: [],
+  },
+  mutations: {
+    ADD_MENU_ITEM({ menu }, { title, icon, path }) {
+      menu.push({
+        icon, path, title,
+      });
+    },
+  },
+  actions: {
+    addMenusFromRouter({ commit }, router) {
+      router.options.routes.map(vo => ({
+        path: vo.path,
+        title: (vo.meta && vo.meta.title) || vo.name,
+        icon: ''
+      })).forEach((vo) => {
+        commit('ADD_MENU_ITEM', vo);
+      });
+    },
   },
 });

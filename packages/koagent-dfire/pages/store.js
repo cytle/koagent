@@ -7,6 +7,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     projects: [],
+    server: {
+      proxyPort: 0,
+      proxyOn: false,
+    },
   },
   mutations: {
     UPDATE_PROJECT_FORWARD({ projects }, { projectName, needForward }) {
@@ -26,8 +30,17 @@ export default new Vuex.Store({
       state.projects.splice(0, state.projects.length);
       state.projects.push(...projects);
     },
+
+    UPDATE_SERVER(state, server) {
+      state.server.proxyPort = server.proxyPort;
+      state.server.proxyOn = server.proxyOn;
+    },
   },
   actions: {
+    async fetchServer({ commit }) {
+      const { data } = await axios.get(`/api/localProxy/server`);
+      commit('UPDATE_SERVER', data);
+    },
     async fetchProjects({ commit }) {
       const { data } = await axios.get(`/api/localProxy/projects`);
       commit('UPDATE_PROJECTS', data);

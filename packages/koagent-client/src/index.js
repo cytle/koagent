@@ -16,8 +16,14 @@ const app = new Vue({
   render: h => h(App),
 });
 
-export default {
+store.dispatch('addMenusFromRouter', router);
+const client = {
   router,
   store,
   app,
+  use(middleware) {
+    middleware(client);
+  },
 };
+
+export default client;

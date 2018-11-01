@@ -20,18 +20,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'App',
   computed: {
-    menu() {
-      console.log(this.$router);
-
-      return this.$router.options.routes.map(vo => ({
-        path: vo.path,
-        name: vo.name,
-        title: (vo.meta && vo.meta.title) || vo.name,
-      }));
-    },
+    ...mapState(['menu']),
   },
 };
 </script>
