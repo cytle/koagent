@@ -1,6 +1,6 @@
 <template>
   <div class='app'>
-    <div class="app__hd">
+    <div class="app__hd" v-show="showMenu">
       <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
@@ -25,7 +25,7 @@ import { mapState } from 'vuex';
 export default {
   name: 'App',
   computed: {
-    ...mapState(['menu']),
+    ...mapState(['menu', 'showMenu']),
   },
 };
 </script>

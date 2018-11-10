@@ -3,21 +3,30 @@ import Koa from 'koa';
 import _ from 'lodash';
 import Configstore from 'configstore';
 import compose from 'koa-compose';
-import { koagentHttpProxy } from 'koagent';
+import koagentHttpProxy from '../../koagent-http-proxy/dist';
 
 const log = debug('koagent:dfireReverseProxy');
 
-const regx = /(^[^/]+)\/([^/]+)(\/.*)?$/;
+const regx = /^\/([^/]+)\/([^/]+)\/(.*)?$/;
 
 const defaultProjectsPort = {
-  'presell-shop': 9999,
+  marketing: 8085,
+  shop: 8086,
+  om: 8087,
+  meal: 8088,
+  bill: 8089,
+  retail: 8090,
+  koa: 30000,
+  'presell-activity': 8092,
+  'presell-shop': 8093,
+  'presell-om': 8094,
 };
 
 const localDomain = 'http://localhost';
 const remoteDomin = 'http://api.l.whereask.com';
 
 const getRmoteUrl = ({ branch, projectName, otherPath }) => {
-  return `${remoteDomin}/${branch}/${projectName}${otherPath}`;
+  return `${remoteDomin}/${branch}/${projectName}/${otherPath}`;
 };
 
 const getLocalUrl = ({ otherPath }, port) => {
@@ -63,10 +72,10 @@ export default class DifreProxyLocalMananger {
   store() {
     this.configStore.set('forwardProjects', this.forwardProjects);
   }
-  match(req) {
-    const res = req.path.match(regx);
+  match(path: string) {
+    const res = path.match(regx);
     if (!res) {
-      return req.url || '';
+      throw new Error(`path: "${path}" 不是一个有效的地址`);
     }
     const [, branch, projectName, otherPath] = res;
     const options = {
@@ -93,8 +102,11 @@ export default class DifreProxyLocalMananger {
   }
   public forward() {
     return compose([
-      ({ req }: Koa.Context) => {
-        req.url = this.match(req);
+      (ctx: Koa.Context, next) => {
+        const targetUrl = this.match(ctx.path);
+        log('target', ctx.path, '=>', targetUrl);
+        ctx.req.url = targetUrl;
+        return next();
       },
       koagentHttpProxy(),
     ]);

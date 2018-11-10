@@ -48,7 +48,7 @@ export default new Vuex.Store({
     async forward({ commit }, projectName) {
       commit('UPDATE_PROJECT_LOADING', { projectName, loading: true });
       try {
-        await axios.pust(`/api/localProxy/forward`, {
+        await axios.put(`/api/localProxy/forward`, {}, {
           params: {
             projectName,
           }

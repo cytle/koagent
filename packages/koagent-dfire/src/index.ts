@@ -6,7 +6,10 @@ import DfireProxyLocalServer from './DfireProxyLocalServer';
 import { createCertificateService } from 'koagent-certificate';
 import koaStatic from 'koa-static';
 import koaLogger from 'koa-logger';
+import debug from 'debug';
 import defaultConfig from './config';
+
+debug.enable('*');
 
 export default async function koagentDifre() {
   const proxyLocalMananger = new DifreProxyLocalMananger();
@@ -26,12 +29,14 @@ export default async function koagentDifre() {
     prefix: '/api/localProxy',
   });
   router.get('/server', (ctx) => {
+    console.log(ctx.req.headers);
+    console.log(ctx.req.url);
     ctx.body = proxyLocalServer.getState();
   });
   router.get('/projects', (ctx) => {
     ctx.body = proxyLocalMananger.getProjects();
   });
-  router.post('/forward', (ctx) => {
+  router.put('/forward', (ctx) => {
     proxyLocalMananger.addForward(ctx.query.projectName);
     ctx.response.status = 200;
   });

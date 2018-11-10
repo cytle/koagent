@@ -47,6 +47,7 @@ export default (options?: HttpProxy.ServerOptions) => {
       target,
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(target.protocol),
+      changeOrigin: true,
       prependPath: false,
       followRedirects: false,
     };
