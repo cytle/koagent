@@ -1,7 +1,8 @@
 import 'babel-polyfill';
-import koagentClient from 'koagent-client';
-// import koagentDfire from '../../koagent-dfire/pages/dist/pages.esm';
+import koagentClient from '../../koagent-client/src';
+import koagentDfire from './pages';
 
-console.log(koagentClient);
+console.log(koagentDfire);
+koagentClient.use(koagentDfire);
+
 koagentClient.app.$mount('#app');
-// koagentClient.router.addRoutes(koagentDfire.routes);

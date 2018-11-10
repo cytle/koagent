@@ -5,9 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Koagent</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="./main.js"></script>
+  <style>
+    #heading {
+      -webkit-user-select: none;
+      position: absolute;
+      top: 50%;
+      margin-top: -150px;
+      text-align: center;
+      width: 100%;
+    }
+    #logo {
+      font: 150px 'Italiana', sans-serif;
+      text-transform: lowercase;
+    }
+    #tagline {
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div id="heading">
+      <div id="logo">Koagent</div>
+      <div id="tagline">next generation web framework for node.js</div>
+    </div>
+  </div>
+  <script src="./main.js"></script>
 </body>
 </html>

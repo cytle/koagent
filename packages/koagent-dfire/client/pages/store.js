@@ -48,7 +48,11 @@ export default new Vuex.Store({
     async forward({ commit }, projectName) {
       commit('UPDATE_PROJECT_LOADING', { projectName, loading: true });
       try {
-        await axios.put(`/api/localProxy/forward/${projectName}`);
+        await axios.pust(`/api/localProxy/forward`, {
+          params: {
+            projectName,
+          }
+        });
         commit('UPDATE_PROJECT_FORWARD', { projectName, needForward: true });
       } finally {
         commit('UPDATE_PROJECT_LOADING', { projectName, loading: false });
@@ -57,7 +61,11 @@ export default new Vuex.Store({
     async dontForward({ commit }, projectName) {
       commit('UPDATE_PROJECT_LOADING', { projectName, loading: true });
       try {
-        await axios.delete(`/api/localProxy/forward/${projectName}`);
+        await axios.delete(`/api/localProxy/forward`, {
+          params: {
+            projectName,
+          }
+        });
         commit('UPDATE_PROJECT_FORWARD', { projectName, needForward: false });
       } finally {
         commit('UPDATE_PROJECT_LOADING', { projectName, loading: false });
