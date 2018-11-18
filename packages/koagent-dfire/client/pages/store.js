@@ -27,7 +27,9 @@ function createSocketPlugin(socket) {
       store.commit('ADD_LOGS', `forward: ${from} => ${target}`);
       store.commit('UPDATE_SERVER', { proxyPort, proxyOn: true });
     });
-
+    socket.on('logRequest', (payload) => {
+      store.commit('ADD_REQUEST_LOGS', payload);
+    });
     socket.on('storing', () => {
       store.commit('UPDATE_STORING', true);
     });
@@ -38,7 +40,7 @@ function createSocketPlugin(socket) {
 
     ['error', 'log'].forEach((vo) => {
       socket.on(vo, (payload) => {
-        store.commit('ADD_LOGS', `${vo}: ${payload}`);
+        store.commit('ADD_LOGS', payload);
       });
     });
   };
@@ -53,6 +55,7 @@ export default new Vuex.Store({
       proxyOn: false,
     },
     logs: [],
+    requestLogs: [],
     storing: false,
   },
   mutations: {
@@ -61,6 +64,12 @@ export default new Vuex.Store({
     },
     ADD_LOGS({ logs }, payload) {
       logs.unshift({
+        logAt: new Date().toLocaleString(),
+        payload,
+      });
+    },
+    ADD_REQUEST_LOGS({ requestLogs }, payload) {
+      requestLogs.unshift({
         logAt: new Date().toLocaleString(),
         payload,
       });

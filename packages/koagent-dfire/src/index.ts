@@ -75,9 +75,14 @@ export default async function koagentDifre() {
       });
     });
   };
-  socketBridge(app, ['error']);
+  app.on('error', (payload) => {
+    localProxyRoom.emit('log', payload.message || payload);
+  });
+  proxyLocalServer.on('error', (payload) => {
+    localProxyRoom.emit('log', payload.message || payload);
+  });
   socketBridge(proxyLocalMananger, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
-  socketBridge(proxyLocalServer, ['error', 'listend', 'log']);
+  socketBridge(proxyLocalServer, ['logRequest', 'listend', 'log']);
 
   const port = 30000;
   server.listen(port, (error) => {

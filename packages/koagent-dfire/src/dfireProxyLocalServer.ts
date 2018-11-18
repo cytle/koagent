@@ -18,8 +18,11 @@ export default class DfireProxyLocalServer extends events.EventEmitter {
     super();
     this.certService = certService;
     this.app = new Koa;
-    this.app.use(koaLogger((str) => {
-      this.emit('log', str);
+    this.app.use(koaLogger((str, [, method, url, status, time, length]) => {
+      console.log('[proxy]', str);
+      if (status) {
+        this.emit('logRequest', { method, url, status, time, length });
+      }
     }));
     this.app.use(forward);
     this.app.on('error', (err) => {
