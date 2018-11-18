@@ -1,3 +1,4 @@
+import http from 'http';
 import path from 'path';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
@@ -7,6 +8,7 @@ import { createCertificateService } from 'koagent-certificate';
 import koaStatic from 'koa-static';
 import koaLogger from 'koa-logger';
 import debug from 'debug';
+import createIo from 'socket.io';
 import defaultConfig from './config';
 
 debug.enable('*');
@@ -20,7 +22,7 @@ export default async function koagentDifre() {
   });
   const proxyLocalServer = await DfireProxyLocalServer.createServer({
     certService,
-    mananger: proxyLocalMananger,
+    forward: proxyLocalMananger.forward(),
   });
 
   proxyLocalServer.listen(30001);
@@ -29,8 +31,6 @@ export default async function koagentDifre() {
     prefix: '/api/localProxy',
   });
   router.get('/server', (ctx) => {
-    console.log(ctx.req.headers);
-    console.log(ctx.req.url);
     ctx.body = proxyLocalServer.getState();
   });
   router.get('/projects', (ctx) => {
@@ -53,7 +53,25 @@ export default async function koagentDifre() {
     .use(router.routes())
     .use(router.allowedMethods());
 
-  app.listen(30000);
+  const server = http.createServer(app.callback());
+  const io = createIo(server);
+  io.on('connection', (socket) => {
+    socket.join('localProxy');
+  });
+  const localProxyRoom = io.to('localProxy');
+
+  const socketBridge = (emitter, events: string[]) => {
+    events.forEach((vo) => {
+      emitter.on(vo, (payload) => {
+        localProxyRoom.emit(vo, payload);
+      });
+    });
+  };
+  socketBridge(app, ['error']);
+  socketBridge(proxyLocalMananger, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
+  socketBridge(proxyLocalServer, ['error', 'listend', 'log']);
+
+  server.listen(30000);
 }
 
 koagentDifre();

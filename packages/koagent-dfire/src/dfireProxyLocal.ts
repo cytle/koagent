@@ -1,11 +1,9 @@
-import debug from 'debug';
+import events from 'events';
 import Koa from 'koa';
 import _ from 'lodash';
 import Configstore from 'configstore';
 import compose from 'koa-compose';
 import koagentHttpProxy from '../../koagent-http-proxy/dist';
-
-const log = debug('koagent:dfireReverseProxy');
 
 const regx = /^\/([^/]+)\/([^/]+)\/(.*)?$/;
 
@@ -16,7 +14,6 @@ const defaultProjectsPort = {
   meal: 8088,
   bill: 8089,
   retail: 8090,
-  koa: 30000,
   'presell-activity': 8092,
   'presell-shop': 8093,
   'presell-om': 8094,
@@ -39,11 +36,12 @@ interface Project {
   desc?: string;
 }
 
-export default class DifreProxyLocalMananger {
+export default class DifreProxyLocalMananger extends events.EventEmitter {
   private projects: Project[] = [];
   private forwardProjects: string[] = [];
   private configStore: Configstore;
   constructor() {
+    super();
     this.resetProjects();
     this.configStore = new Configstore('koagent-dfire', {
       forwardProjects: this.forwardProjects,
@@ -56,6 +54,7 @@ export default class DifreProxyLocalMananger {
   addForward(projectName) {
     if (!this.needForward(projectName)) {
       this.forwardProjects.push(projectName);
+      this.emit('addForward', projectName);
       this.store();
     }
   }
@@ -63,6 +62,7 @@ export default class DifreProxyLocalMananger {
     if (this.needForward(projectName)) {
       this.forwardProjects = this.forwardProjects
         .filter(vo => vo !== projectName);
+      this.emit('removeForward', projectName);
       this.store();
     }
   }
@@ -70,7 +70,9 @@ export default class DifreProxyLocalMananger {
     this.forwardProjects = this.configStore.get('forwardProjects');
   }
   store() {
+    this.emit('storing');
     this.configStore.set('forwardProjects', this.forwardProjects);
+    this.emit('stored');
   }
   match(path: string) {
     const res = path.match(regx);
@@ -83,7 +85,6 @@ export default class DifreProxyLocalMananger {
     };
     const project = this.projects.find(vo => vo.name === projectName);
     if (project && this.needForward(projectName)) {
-      log('localFoward', projectName);
       return getLocalUrl(options, project.localPort);
     }
     return getRmoteUrl(options);
@@ -104,7 +105,10 @@ export default class DifreProxyLocalMananger {
     return compose([
       (ctx: Koa.Context, next) => {
         const targetUrl = this.match(ctx.path);
-        log('target', ctx.path, '=>', targetUrl);
+        this.emit('forward', {
+          from: ctx.path,
+          target: targetUrl,
+        });
         ctx.req.url = targetUrl;
         return next();
       },

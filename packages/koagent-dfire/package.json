@@ -21,6 +21,7 @@
     "@types/vue": "^2.0.0",
     "@vue/component-compiler-utils": "^2.3.0",
     "cssnano": "^4.1.7",
+    "less": "^3.8.1",
     "rimraf": "^2.6.2",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.4",
@@ -38,6 +39,8 @@
     "koagent-client": "^0.1.13-y.4",
     "koagent-server": "^0.1.13-y.4",
     "lodash": "^4.17.11",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "vue": "^2.5.17",
     "vuex": "^3.0.1"
   },

@@ -1,10 +1,7 @@
 import events from 'events';
 import Koa from 'koa';
 import KoagentServer from 'koagent-server';
-import debug from 'debug';
 import koaLogger from 'koa-logger';
-
-const log = debug('koagent-dfire:server');
 
 export default class DfireProxyLocalServer extends events.EventEmitter {
   public static async createServer(options) {
@@ -15,18 +12,18 @@ export default class DfireProxyLocalServer extends events.EventEmitter {
   public proxyPort: number;
   public proxyOn: boolean;
   private server: KoagentServer;
-  private app: Koa;
+  public app: Koa;
   private certService;
-  constructor({ certService, mananger }) {
+  constructor({ certService, forward }) {
     super();
     this.certService = certService;
     this.app = new Koa;
     this.app.use(koaLogger((str) => {
-      console.log('[proxy]', str);
+      this.emit('log', str);
     }));
-    this.app.use(mananger.forward());
+    this.app.use(forward);
     this.app.on('error', (err) => {
-      log('proxyApp error', err);
+      this.emit('error', err);
     });
   }
   private async init() {

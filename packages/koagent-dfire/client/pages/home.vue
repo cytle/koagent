@@ -1,24 +1,18 @@
 <template>
   <div>
-    <el-row>
+    <el-button-group>
+      <el-button
+        type="primary"
+        :icon="proxyOn ? 'el-icon-success' : 'el-icon-error'"
+      >代理端口: {{ proxyPort }}</el-button>
+      <el-button type="primary" icon="el-icon-edit"></el-button>
       <el-button
         @click="refresh"
+        :disabled="refreshing"
         :icon="refreshing ? 'el-icon-loading' : 'el-icon-refresh'"
-        circle
+        type="primary"
       />
-    </el-row>
-    <el-row>
-      <el-form class="demo-form-inline">
-        <el-form-item label="代理端口">
-          {{ server.proxyPort }}
-        </el-form-item>
-
-        <el-form-item label="服务状态">
-          <i class="el-icon-success" v-if="server.proxyOn"></i>
-          <i class="el-icon-error" v-else></i>
-        </el-form-item>
-      </el-form>
-    </el-row>
+    </el-button-group>
 
     <el-table
       :data="projects"
@@ -44,6 +38,10 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-table height="250" :data="logs">
+      <el-table-column prop="logAt" label="时间" width="200"/>
+      <el-table-column prop="payload" label="日志"/>
+    </el-table>
   </div>
 </template>
 <script>
@@ -57,7 +55,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['projects', 'server']),
+    ...mapState(['projects', 'proxyOn', 'proxyPort', 'logs']),
   },
   beforeCreate() {
     this.$store = store;
@@ -84,11 +82,7 @@ export default {
     },
     async toggleForward(projectName, needForward) {
       try {
-        if (needForward) {
-        await store.dispatch('forward', projectName);
-        } else {
-          await store.dispatch('dontForward', projectName);
-        }
+        await store.dispatch(needForward ? 'addForward' : removeForward, projectName);
       } catch (error) {
         console.error(error);
       }
@@ -96,3 +90,10 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.home__refresh-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+}
+</style>
