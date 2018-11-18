@@ -13,6 +13,8 @@ import defaultConfig from './config';
 
 debug.enable('*');
 
+const log = debug('koagent-difre');
+
 export default async function koagentDifre() {
   const proxyLocalMananger = new DifreProxyLocalMananger();
 
@@ -57,6 +59,12 @@ export default async function koagentDifre() {
   const io = createIo(server);
   io.on('connection', (socket) => {
     socket.join('localProxy');
+    socket.on('removeForward', (projectName) => {
+      proxyLocalMananger.removeForward(projectName);
+    });
+    socket.on('addForward', (projectName) => {
+      proxyLocalMananger.addForward(projectName);
+    });
   });
   const localProxyRoom = io.to('localProxy');
 
@@ -71,7 +79,14 @@ export default async function koagentDifre() {
   socketBridge(proxyLocalMananger, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
   socketBridge(proxyLocalServer, ['error', 'listend', 'log']);
 
-  server.listen(30000);
+  const port = 30000;
+  server.listen(port, (error) => {
+    if (error) {
+      console.error(error);
+      return;
+    }
+    log('listend', `localhost:${port}`);
+  });
 }
 
 koagentDifre();

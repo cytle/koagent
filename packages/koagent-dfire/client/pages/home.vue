@@ -1,33 +1,26 @@
 <template>
   <div>
     <el-button-group>
-      <el-button
-        type="primary"
-        :icon="proxyOn ? 'el-icon-success' : 'el-icon-error'"
-      >代理端口: {{ proxyPort }}</el-button>
-      <el-button type="primary" icon="el-icon-edit"></el-button>
+      <el-tooltip effect="dark" :content="localUrl" placement="bottom">
+        <el-button
+          type="primary"
+          @click="openLocalUrl"
+          :icon="server.proxyOn ? 'el-icon-success' : 'el-icon-error'"
+        >代理端口: {{ server.proxyPort }}</el-button>
+      </el-tooltip>
+      <!-- <el-button type="primary" icon="el-icon-edit"></el-button> -->
       <el-button
         @click="refresh"
-        :disabled="refreshing"
-        :icon="refreshing ? 'el-icon-loading' : 'el-icon-refresh'"
+        :loading="refreshing"
+        icon="el-icon-refresh"
         type="primary"
       />
     </el-button-group>
-
     <el-table
       :data="projects"
       style="width: 100%">
-      <el-table-column label="项目">
-        <template slot-scope="scope">
-          <i class="el-icon-loading" v-if="scope.row.loading"></i>
-          <span style="margin-left: 10px">{{ scope.row.name }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="目标端口">
-        <template slot-scope="scope">
-          {{ scope.row.localPort }}
-        </template>
-      </el-table-column>
+      <el-table-column prop="name" label="项目"></el-table-column>
+      <el-table-column prop="localPort" label="目标端口"></el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-switch
@@ -38,9 +31,9 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-table height="250" :data="logs">
-      <el-table-column prop="logAt" label="时间" width="200"/>
-      <el-table-column prop="payload" label="日志"/>
+    <el-table height="250" :data="logs" style="width: 100%">
+      <el-table-column prop="logAt" label="时间" width="200"></el-table-column>
+      <el-table-column prop="payload" label="日志"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -55,7 +48,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(['projects', 'proxyOn', 'proxyPort', 'logs']),
+    ...mapState(['projects', 'server', 'logs']),
+    localUrl() {
+      return `http://localhost:${this.server.proxyPort}`;
+    },
   },
   beforeCreate() {
     this.$store = store;
@@ -64,11 +60,15 @@ export default {
     this.refresh();
   },
   methods: {
-    ...mapActions(['fetchProjects', 'fetchServer']),
+    ...mapActions(['fetchProjects', 'fetchServer', 'addForward', 'removeForward']),
+    openLocalUrl() {
+      window.open(this.localUrl, '_blank');
+    },
     async refresh() {
       if (this.refreshing) {
         return;
       }
+      this.refreshing = true;
       try {
         await Promise.all([
           this.fetchProjects(),
@@ -76,13 +76,23 @@ export default {
         ]);
       } catch (error) {
         console.error(error);
+        this.$message({
+          message: error.message,
+          type: 'error'
+        });
       } finally {
-        this.refreshing = false;
+        setTimeout(() => {
+          this.refreshing = false;
+        }, 300);
       }
     },
     async toggleForward(projectName, needForward) {
       try {
-        await store.dispatch(needForward ? 'addForward' : removeForward, projectName);
+        if (needForward) {
+          await this.addForward(projectName);
+        } else {
+          await this.removeForward(projectName);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -90,10 +100,3 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
-.home__refresh-btn {
-  position: fixed;
-  right: 20px;
-  bottom: 30px;
-}
-</style>
