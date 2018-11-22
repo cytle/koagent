@@ -1,6 +1,6 @@
 {
   "name": "koagent-client",
-  "version": "0.1.13-y.4",
+  "version": "0.1.13",
   "description": "koagent client",
   "author": "炒饭 <chaofan@2dfire.com>",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.9",
-    "koagent": "^0.1.13-y.4",
+    "koagent": "^0.1.13",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.0",
     "socket.io-client": "^2.1.1",
