@@ -3,7 +3,7 @@ import Koa from 'koa';
 import _ from 'lodash';
 import Configstore from 'configstore';
 import compose from 'koa-compose';
-import koagentHttpProxy from '../../koagent-http-proxy/dist';
+import koagentHttpProxy from 'koagent-http-proxy';
 
 const regx = /^\/([^/]+)\/([^/]+)\/(.*)?$/;
 

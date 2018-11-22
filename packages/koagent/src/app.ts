@@ -1,6 +1,5 @@
 import debug from 'debug';
 import Koagent, { koagentCertificate, koagentHttpProxy } from './index';
-import koagentDfire from '../../koagent-dfire';
 
 debug.enable('*');
 
@@ -9,7 +8,6 @@ const log = debug('koagent');
 Promise.resolve().then(async () => {
   const koagent = await Koagent.create();
 
-  koagent.use(await koagentDfire(koagent));
   koagent.use(koagentCertificate(koagent));
   koagent.proxyApp.use(koagentHttpProxy());
   console.log(koagent.managerRouter.stack.map(i => i.path));
