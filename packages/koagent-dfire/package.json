@@ -1,6 +1,6 @@
 {
   "name": "koagent-dfire",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -35,9 +35,9 @@
     "koa-compose": "^4.1.0",
     "koa-logger": "^3.2.0",
     "koa-static": "^5.0.0",
-    "koagent": "^0.1.13",
-    "koagent-client": "^0.1.13",
-    "koagent-server": "^0.1.13",
+    "koagent": "^0.1.14",
+    "koagent-client": "^0.1.14",
+    "koagent-server": "^0.1.14",
     "lodash": "^4.17.11",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
