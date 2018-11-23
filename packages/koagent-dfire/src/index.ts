@@ -11,11 +11,12 @@ import debug from 'debug';
 import createIo from 'socket.io';
 import defaultConfig from './config';
 
-debug.enable('*');
-
 const log = debug('koagent-difre');
 
-export default async function koagentDifre() {
+export default async function koagentDifre({
+  proxyPort,
+  managerPort,
+}) {
   const proxyLocalMananger = new DifreProxyLocalMananger();
 
   const certService = createCertificateService({
@@ -27,7 +28,7 @@ export default async function koagentDifre() {
     forward: proxyLocalMananger.forward(),
   });
 
-  proxyLocalServer.listen(30001);
+  proxyLocalServer.listen(proxyPort);
 
   const router = new KoaRouter({
     prefix: '/api/localProxy',
@@ -84,14 +85,11 @@ export default async function koagentDifre() {
   socketBridge(proxyLocalMananger, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
   socketBridge(proxyLocalServer, ['logRequest', 'listend', 'log']);
 
-  const port = 30000;
-  server.listen(port, (error) => {
+  server.listen(managerPort, (error) => {
     if (error) {
       console.error(error);
       return;
     }
-    log('listend', `localhost:${port}`);
+    log('listend', `localhost:${managerPort}`);
   });
 }
-
-koagentDifre();
