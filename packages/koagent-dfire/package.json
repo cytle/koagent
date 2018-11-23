@@ -1,0 +1,51 @@
+{
+  "name": "koagent-dfire",
+  "version": "0.1.18",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:client": "parcel build client/index.html -d dist/client",
+    "dev:client": "parcel watch client/index.html -d dist/client",
+    "dev": "rimraf dist && tsc --watch",
+    "build": "rimraf dist && tsc && npm run build:client",
+    "start": "ts-node src/index",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": "dist/bin/koagent-dfire.js",
+  "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
+  "devDependencies": {
+    "@types/http-proxy": "^1.16.2",
+    "@types/koa": "^2.0.46",
+    "@types/lodash": "^4.14.117",
+    "@types/node": "^10.12.0",
+    "@types/vue": "^2.0.0",
+    "@vue/component-compiler-utils": "^2.3.0",
+    "cssnano": "^4.1.7",
+    "less": "^3.8.1",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.4",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
+    "configstore": "^4.0.0",
+    "debug": "^4.1.0",
+    "http-proxy": "^1.17.0",
+    "koa-compose": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-static": "^5.0.0",
+    "koagent": "^0.1.14",
+    "koagent-client": "^0.1.14",
+    "koagent-server": "^0.1.14",
+    "lodash": "^4.17.11",
+    "opn": "^5.4.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "vue": "^2.5.17",
+    "vuex": "^3.0.1"
+  },
+  "license": "ISC"
+}

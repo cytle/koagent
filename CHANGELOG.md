@@ -10,7 +10,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * a simple koa-server ([e2b0217](https://github.com/cytle/koagent/commit/e2b0217))
 * add certificate ([8dbc006](https://github.com/cytle/koagent/commit/8dbc006))
-* certificate ([db5cf24](https://github.com/cytle/koagent/commit/db5cf24))
 * certificate-middleware ([13ae187](https://github.com/cytle/koagent/commit/13ae187))
 * eslint support typescript ([12a2535](https://github.com/cytle/koagent/commit/12a2535))
 * lerna ([a294436](https://github.com/cytle/koagent/commit/a294436))

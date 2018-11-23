@@ -1,0 +1,43 @@
+{
+  "name": "koagent-client",
+  "version": "0.1.14",
+  "description": "koagent client",
+  "author": "炒饭 <chaofan@2dfire.com>",
+  "scripts": {
+    "dev": "parcel watch src/index.js",
+    "build": "rimraf dist && parcel build src/index.js",
+    "start": "parcel src/index.html",
+    "build:client": "parcel build src/index.html",
+    "prepublishOnly": "npm run build"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.9",
+    "koagent": "^0.1.14",
+    "lodash": "^4.17.11",
+    "normalize.css": "^8.0.0",
+    "socket.io-client": "^2.1.1",
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-i18n": "^8.3.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.3.0",
+    "cssnano": "^4.1.7",
+    "rimraf": "^2.6.0",
+    "typescript": "^3.1.4",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

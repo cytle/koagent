@@ -1,29 +1,35 @@
+import debug from 'debug';
 import url from 'url';
 import HttpProxy from 'http-proxy';
 import Koa from 'koa';
 import _ from 'lodash';
 
-const isSecureProtocol = (protocol: string | undefined) =>
-  ['https', 'wss'].indexOf(protocol || '') !== -1;
+const log = debug('koagent:http-proxy');
 
-const isWebsocketProtocol = (protocol: string | undefined) =>
-  ['ws', 'wss'].indexOf(protocol || '') !== -1;
+const isSSL = /^https|wss/i;
+const isSecureProtocol = (protocol: string | undefined) => isSSL.test(protocol || '');
+
+const isWS = /^ws/i;
+const isWebsocketProtocol = (protocol: string | undefined) => isWS.test(protocol || '');
+
 /**
  * 使用http-proxy转发请求
- * TODO WebSocket
  */
-export default (options: HttpProxy.ServerOptions) => {
-  const proxy = new HttpProxy(options);
-  const globalTarget = options.target || options.forward;
 
-  return ({ req, res, request }: Koa.Context) =>
-  new Promise((resolve, reject) => {
+export default (options?: HttpProxy.ServerOptions) => {
+  const proxy = new HttpProxy(options);
+
+  return ({ req, res }: Koa.Context) =>
+  new Promise(async (resolve, reject) => {
     if (res.finished) {
       resolve();
       return;
     }
     // 如果没有设置全局的target则直接转发当前的url
-    const proxyTargetUrl = globalTarget || request.url || '';
+    const proxyTargetUrl = req.url || '';
+
+    log('proxyTargetUrl', proxyTargetUrl);
+
     const target = _.isString(proxyTargetUrl)
       ? url.parse(proxyTargetUrl)
       : proxyTargetUrl;
@@ -33,16 +39,19 @@ export default (options: HttpProxy.ServerOptions) => {
     res.on('close', () => {
       reject(new Error(`Http response closed while proxying ${req.url}`));
     });
-    res.on('finish', () => resolve());
+    res.on('finish', () => {
+      resolve();
+    });
 
     const proxyOptions = {
       target,
       secure: isSecureProtocol(target.protocol),
-      // ssl: isSecureProtocol(request.protocol)
-      //   ? certificate.getForHost(request.url)
-      //   : undefined,
-      ws: isWebsocketProtocol(request.protocol),
+      ws: isWebsocketProtocol(target.protocol),
+      changeOrigin: true,
+      prependPath: false,
+      followRedirects: false,
     };
+
     proxy.web(req, res, proxyOptions, reject);
   });
 };

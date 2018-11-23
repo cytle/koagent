@@ -1,10 +1,11 @@
 {
   "name": "koagent-certificate",
-  "version": "0.1.4",
+  "version": "0.1.14",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && tsc",
+    "dev": "rimraf dist && tsc --watch",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,5 +25,9 @@
     "pem": "^1.13.1",
     "promisfy": "^1.1.4"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "typescript": "^3.1.6"
+  }
 }

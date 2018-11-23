@@ -33,7 +33,7 @@
     "lib": [
         "dom",
         "es2017"
-    ]
+    ],
   },
   "exclude": [
     "cmd",
@@ -43,6 +43,7 @@
     "dist",
     ".felint",
     ".milti_hooks",
+    "packages/**/dist",
     "**/test/**/*.spec.ts"
   ],
   "compileOnSave": true
