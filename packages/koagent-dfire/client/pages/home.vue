@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button-group>
-      <el-tooltip effect="dark" :content="localUrl" placement="bottom">
+      <el-tooltip effect="dark" :content="'示例路径: ' + localUrl" placement="bottom">
         <el-button
           type="primary"
           @click="openLocalUrl"
@@ -20,7 +20,7 @@
       :data="projects"
       style="width: 100%">
       <el-table-column prop="name" label="项目"></el-table-column>
-      <el-table-column prop="localPort" label="目标端口"></el-table-column>
+      <el-table-column prop="localPort" label="本地端口"></el-table-column>
       <el-table-column label="操作" width="140">
         <template slot-scope="scope">
           <el-switch
@@ -53,12 +53,15 @@ export default {
   data() {
     return {
       refreshing: false,
+      branchName: '变更名',
+      projectName: '项目名',
+      path: '请求路径',
     };
   },
   computed: {
     ...mapState(['projects', 'server', 'logs', 'requestLogs']),
     localUrl() {
-      return `http://localhost:${this.server.proxyPort}`;
+      return `http://localhost:${this.server.proxyPort}/${this.branchName}/${this.projectName}/${this.path}`;
     },
   },
   beforeCreate() {
