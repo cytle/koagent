@@ -39,7 +39,7 @@
       <el-table-column prop="payload.time" label="time"></el-table-column>
       <el-table-column prop="payload.length" label="length"></el-table-column>
     </el-table> -->
-    <el-table height="250" :data="logs" style="width: 100%">
+    <el-table height="400" :data="logs" style="width: 100%">
       <el-table-column prop="logAt" label="时间" width="200"></el-table-column>
       <el-table-column prop="payload" label="日志"></el-table-column>
     </el-table>
