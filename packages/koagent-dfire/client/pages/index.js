@@ -2,13 +2,13 @@ import index from './home.vue';
 
 export default ({ router, store }) => {
   store.commit('ADD_MENU_ITEM', {
-    path: '/dfire',
+    path: '/',
     title: '本地反向代理',
     icon: ''
   });
   router.addRoutes([
     {
-      path: '/dfire',
+      path: '/',
       name: 'DFire',
       component: index,
     }

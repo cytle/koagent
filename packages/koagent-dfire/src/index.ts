@@ -2,7 +2,7 @@ import http from 'http';
 import path from 'path';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
-import DifreProxyLocalMananger from './dfireProxyLocal';
+import DifreproxyLocalManager from './dfireProxyLocal';
 import DfireProxyLocalServer from './DfireProxyLocalServer';
 import { createCertificateService } from 'koagent-certificate';
 import koaStatic from 'koa-static';
@@ -17,7 +17,7 @@ export default async function koagentDifre({
   proxyPort,
   managerPort,
 }) {
-  const proxyLocalMananger = new DifreProxyLocalMananger();
+  const proxyLocalManager = new DifreproxyLocalManager();
 
   const certService = createCertificateService({
     storagePath: defaultConfig.certifacateStoragePath,
@@ -25,7 +25,7 @@ export default async function koagentDifre({
   });
   const proxyLocalServer = await DfireProxyLocalServer.createServer({
     certService,
-    forward: proxyLocalMananger.forward(),
+    forward: proxyLocalManager.forward(),
   });
 
   proxyLocalServer.listen(proxyPort);
@@ -37,14 +37,14 @@ export default async function koagentDifre({
     ctx.body = proxyLocalServer.getState();
   });
   router.get('/projects', (ctx) => {
-    ctx.body = proxyLocalMananger.getProjects();
+    ctx.body = proxyLocalManager.getProjects();
   });
   router.put('/forward', (ctx) => {
-    proxyLocalMananger.addForward(ctx.query.projectName);
+    proxyLocalManager.addForward(ctx.query.projectName);
     ctx.response.status = 200;
   });
   router.delete('/forward', (ctx) => {
-    proxyLocalMananger.removeForward(ctx.query.projectName);
+    proxyLocalManager.removeForward(ctx.query.projectName);
     ctx.response.status = 200;
   });
   const app = new Koa();
@@ -61,10 +61,10 @@ export default async function koagentDifre({
   io.on('connection', (socket) => {
     socket.join('localProxy');
     socket.on('removeForward', (projectName) => {
-      proxyLocalMananger.removeForward(projectName);
+      proxyLocalManager.removeForward(projectName);
     });
     socket.on('addForward', (projectName) => {
-      proxyLocalMananger.addForward(projectName);
+      proxyLocalManager.addForward(projectName);
     });
   });
   const localProxyRoom = io.to('localProxy');
@@ -82,7 +82,7 @@ export default async function koagentDifre({
   proxyLocalServer.on('error', (payload) => {
     localProxyRoom.emit('log', payload.message || payload);
   });
-  socketBridge(proxyLocalMananger, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
+  socketBridge(proxyLocalManager, ['forward', 'addForward', 'removeForward', 'storing', 'stored']);
   socketBridge(proxyLocalServer, ['logRequest', 'listend', 'log']);
 
   server.listen(managerPort, (error) => {

@@ -31,14 +31,14 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-table height="250" :data="requestLogs" style="width: 100%">
+    <!-- <el-table height="250" :data="requestLogs" style="width: 100%">
       <el-table-column prop="logAt" label="时间" width="200"></el-table-column>
       <el-table-column prop="payload.method" label="method"></el-table-column>
       <el-table-column prop="payload.url" label="url"></el-table-column>
       <el-table-column prop="payload.status" label="status"></el-table-column>
       <el-table-column prop="payload.time" label="time"></el-table-column>
       <el-table-column prop="payload.length" label="length"></el-table-column>
-    </el-table>
+    </el-table> -->
     <el-table height="250" :data="logs" style="width: 100%">
       <el-table-column prop="logAt" label="时间" width="200"></el-table-column>
       <el-table-column prop="payload" label="日志"></el-table-column>
