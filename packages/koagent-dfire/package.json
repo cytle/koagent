@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": "dist/bin/koagent-dfire",
+  "bin": "dist/bin/koagent-dfire.js",
   "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
   "devDependencies": {
     "@types/http-proxy": "^1.16.2",
