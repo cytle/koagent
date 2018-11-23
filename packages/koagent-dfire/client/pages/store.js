@@ -64,13 +64,13 @@ export default new Vuex.Store({
     },
     ADD_LOGS({ logs }, payload) {
       logs.unshift({
-        logAt: new Date().toLocaleString(),
+        logAt: new Date().toLocaleTimeString(),
         payload,
       });
     },
     ADD_REQUEST_LOGS({ requestLogs }, payload) {
       requestLogs.unshift({
-        logAt: new Date().toLocaleString(),
+        logAt: new Date().toLocaleTimeString(),
         payload,
       });
     },

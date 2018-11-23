@@ -40,7 +40,7 @@
       <el-table-column prop="payload.length" label="length"></el-table-column>
     </el-table> -->
     <el-table height="400" :data="logs" style="width: 100%">
-      <el-table-column prop="logAt" label="时间" width="200"></el-table-column>
+      <el-table-column prop="logAt" label="时间" width="100"></el-table-column>
       <el-table-column prop="payload" label="日志"></el-table-column>
     </el-table>
   </div>
