@@ -4,12 +4,12 @@ import http from 'http';
 import https from 'https';
 import { createSecureContext } from 'tls';
 import { IKoagentServerOptions } from './interfaces';
-import { Tunnel } from '../handlers';
+import { Tunnel } from './handlers';
 import fillReqUrl from './fillReqUrl';
 
 const log = debug('koagent:KoangetServer');
 
-export class KoangetServer {
+export default class KoangetServer {
   public static async createServer(options: IKoagentServerOptions) {
     const server = new KoangetServer(options);
     await server.init();

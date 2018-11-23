@@ -1,11 +1,13 @@
-import debug from 'debug';
-import { KoangetServer } from './servers';
+import path from 'path';
+import KoangetServer from 'koagent-server';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
-import defaultConfig from './config';
 import { createCertificateService, ICertificateService } from 'koagent-certificate';
+import koaStatic from 'koa-static';
+import koaLogger from 'koa-logger';
+// import koaMount from 'koa-mount';
 
-debug.enable('*');
+import defaultConfig from './config';
 
 export default class Koagent {
   public static async create() {
@@ -24,16 +26,29 @@ export default class Koagent {
       rootKey: defaultConfig.certifacateRootKey,
     });
     this.proxyApp = new Koa();
+
+    this.proxyApp
+      .use(koaLogger((str) => {
+        console.log('[proxy]', str);
+      }));
     this.managerApp = new Koa();
-    this.managerRouter = new KoaRouter();
-    this.managerApp.use(this.managerRouter.routes());
+    this.managerRouter = new KoaRouter({
+      prefix: '/api',
+    });
+    this.managerApp
+      .use(koaLogger((str) => {
+        console.log('[manager]', str);
+      }))
+      .use(koaStatic(path.join(__dirname, '..', 'dist', 'client')))
+      .use(this.managerRouter.routes())
+      .use(this.managerRouter.allowedMethods());
   }
   async init() {
     this.proxyServer = await KoangetServer.createServer({ certService: this.certService });
     this.proxyServer.onRequest(this.proxyApp.callback());
     this.proxyServer.onError(this.proxyApp.onerror);
   }
-  use(middleware) {
-    this.proxyApp.use(middleware(this));
+  use(middleware: Koa.Middleware) {
+    this.proxyApp.use(middleware);
   }
 }

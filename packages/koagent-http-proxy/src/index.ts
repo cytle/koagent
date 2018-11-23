@@ -34,7 +34,7 @@ export default (options?: HttpProxy.ServerOptions) => {
       ? url.parse(proxyTargetUrl)
       : proxyTargetUrl;
 
-    // res.setHeader('x-koagent-proxy-target', target.href || '');
+    res.setHeader('x-koagent-proxy-target', target.href || '');
 
     res.on('close', () => {
       reject(new Error(`Http response closed while proxying ${req.url}`));
@@ -47,6 +47,7 @@ export default (options?: HttpProxy.ServerOptions) => {
       target,
       secure: isSecureProtocol(target.protocol),
       ws: isWebsocketProtocol(target.protocol),
+      changeOrigin: true,
       prependPath: false,
       followRedirects: false,
     };
