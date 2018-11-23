@@ -21,9 +21,9 @@ koagentDifre({
   managerPort: program.managerPort,
   proxyPort: program.porxyPort,
 }).then(() => {
-  const managerPath = `http://localhost:${program.managerPort}`;
+  const managerPath = `http://localhost:${program.managerPort}/`;
   console.log(`manager: ${managerPath}`);
-  console.log(`proxy: http://localhost:${program.porxyPort}`);
+  console.log(`proxy: http://localhost:${program.porxyPort}/`);
   opn(managerPath);
 }, (error) => {
   console.error(error);
