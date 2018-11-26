@@ -120,9 +120,9 @@ export default class DifreProxyLocalMananger extends events.EventEmitter {
   public forward() {
     return compose([
       (ctx: Koa.Context, next) => {
-        const targetUrl = this.match(ctx.path);
+        const targetUrl = this.match(ctx.url);
         this.emit('forward', {
-          from: ctx.path,
+          from: ctx.url,
           target: targetUrl,
         });
         ctx.req.url = targetUrl;

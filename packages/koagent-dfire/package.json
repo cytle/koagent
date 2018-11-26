@@ -8,7 +8,7 @@
     "dev:client": "parcel watch client/index.html -d dist/client",
     "dev": "rimraf dist && tsc --watch",
     "build": "rimraf dist && tsc && npm run build:client",
-    "start": "ts-node src/index",
+    "start": "ts-node src/bin/koagent-dfire",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
