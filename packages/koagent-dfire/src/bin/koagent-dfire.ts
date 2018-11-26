@@ -7,8 +7,8 @@ import koagentDifre from '..';
 
 program
   .version('0.1.0')
-  .option('-p, --porxy-port [proxyPort]', '代理端口', 30000)
-  .option('--manager-port [managerPort]', '管理端口', 30001)
+  .option('-p, --porxy-port [proxyPort]', '代理端口', 5107)
+  .option('--manager-port [managerPort]', '管理端口', 5106)
   .option('--debug', '开启debug，打印更多日志', false)
   .parse(process.argv);
 
