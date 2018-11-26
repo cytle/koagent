@@ -20,10 +20,26 @@ const defaultProjectsPort = {
 };
 
 const localDomain = 'http://localhost';
-const remoteDomin = 'http://api.l.whereask.com';
+
+const remoteServerDomins = {
+  pre: 'http://meal.2dfire-pre.com',
+  publish: 'http://meal.2dfire.com',
+};
+
+const remoteStaticDomins = {
+  dev: 'http://api.l.whereask.com',
+  pre: 'http://d.2dfire-pre.com',
+  publish: 'http://d.2dfire.com',
+};
 
 const getRmoteUrl = ({ branch, projectName, otherPath }) => {
-  return `${remoteDomin}/${branch}/${projectName}/${otherPath}`;
+  if (branch === 'pre' || branch === 'publish') {
+    if (projectName === 'api') {
+      return `${remoteServerDomins[branch]}/${otherPath}`;
+    }
+    return `${remoteStaticDomins[branch]}/${projectName}/${otherPath}`;
+  }
+  return `${remoteStaticDomins.dev}/${branch}/${projectName}/${otherPath}`;
 };
 
 const getLocalUrl = ({ otherPath }, port) => {
