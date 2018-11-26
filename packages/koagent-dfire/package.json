@@ -1,6 +1,6 @@
 {
   "name": "koagent-dfire",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "内部Node反向代理项目环境工具",
   "main": "dist/index.js",
   "scripts": {
