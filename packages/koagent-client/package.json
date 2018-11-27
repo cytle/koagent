@@ -1,8 +1,8 @@
 {
   "name": "koagent-client",
-  "version": "0.1.14",
+  "version": "0.1.21",
   "description": "koagent client",
-  "author": "炒饭 <chaofan@2dfire.com>",
+  "author": "炒饭 <canyoutle@gmail.com>",
   "scripts": {
     "dev": "parcel watch src/index.js",
     "build": "rimraf dist && parcel build src/index.js",
@@ -14,7 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.9",
-    "koagent": "^0.1.14",
+    "koagent": "^0.1.21",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.0",
     "socket.io-client": "^2.1.1",
@@ -30,6 +30,17 @@
     "rimraf": "^2.6.0",
     "typescript": "^3.1.4",
     "vue-template-compiler": "^2.5.17"
+  },
+  "keywords": [
+    "koa",
+    "agent",
+    "proxy",
+    "代理",
+    "koagent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cytle/koagent.git"
   },
   "engines": {
     "node": ">= 6.0.0",

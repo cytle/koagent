@@ -20,6 +20,17 @@
       "args": [
         "${workspaceRoot}/packages/koagent/src/index.ts"
       ]
+    },
+    {
+      "name": "Launch dfire",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/packages/koagent-dfire/node_modules/.bin/ts-node",
+      "cwd": "${workspaceRoot}/packages/koagent-dfire",
+      "args": [
+        "src/bin/koagent-dfire"
+      ]
     }
   ]
 }
