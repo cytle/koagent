@@ -13,8 +13,18 @@
     "prepublishOnly": "npm run build",
     "test": "ts-node src/request"
   },
-  "keywords": [],
-  "author": "炒饭 <chaofan@2dfire.com> (https://git.2dfire-inc.com/chaofan)",
+  "keywords": [
+    "koa",
+    "agent",
+    "proxy",
+    "代理",
+    "koagent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cytle/koagent.git"
+  },
+  "author": "炒饭 <canyoutle@gmail.com> (https://github.com/cytle)",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",

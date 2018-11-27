@@ -51,4 +51,4 @@ localhost:端口/环境/api关键字/请求路径
 - 打开开关表示使用本地，关闭表示使用转发
 - 日志中会有每次请求的代理情况
 
-![图片.png](./media/图片.png)
+![图片.png](https://raw.githubusercontent.com/cytle/koagent/master/packages/koagent-dfire/media/%E5%9B%BE%E7%89%87.png)
