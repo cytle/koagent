@@ -1,6 +1,6 @@
 {
   "name": "koagent-server",
-  "version": "0.1.14",
+  "version": "0.1.21",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "debug": "^4.1.0",
     "get-port": "^4.0.0",
-    "koagent-certificate": "^0.1.14"
+    "koagent-certificate": "^0.1.21"
   },
   "license": "ISC",
   "devDependencies": {

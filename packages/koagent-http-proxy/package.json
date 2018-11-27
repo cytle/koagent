@@ -1,6 +1,6 @@
 {
   "name": "koagent-http-proxy",
-  "version": "0.1.13",
+  "version": "0.1.21",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

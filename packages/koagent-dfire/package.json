@@ -1,6 +1,6 @@
 {
   "name": "koagent-dfire",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "内部Node反向代理项目环境工具",
   "main": "dist/index.js",
   "scripts": {
@@ -37,9 +37,9 @@
     "koa-compose": "^4.1.0",
     "koa-logger": "^3.2.0",
     "koa-static": "^5.0.0",
-    "koagent": "^0.1.14",
-    "koagent-client": "^0.1.14",
-    "koagent-server": "^0.1.14",
+    "koagent": "^0.1.21",
+    "koagent-client": "^0.1.21",
+    "koagent-server": "^0.1.21",
     "lodash": "^4.17.11",
     "opn": "^5.4.0",
     "socket.io": "^2.1.1",
