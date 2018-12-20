@@ -3,13 +3,11 @@ import path from 'path';
 import Koa from 'koa';
 import KoaRouter from 'koa-router';
 import DifreproxyLocalManager from './dfireProxyLocal';
-import DfireProxyLocalServer from './DfireProxyLocalServer';
-import { createCertificateService } from 'koagent-certificate';
+import DfireProxyLocalServer from './dfireProxyLocalServer';
 import koaStatic from 'koa-static';
 import koaLogger from 'koa-logger';
 import debug from 'debug';
 import createIo from 'socket.io';
-import defaultConfig from './config';
 
 const log = debug('koagent-difre');
 
@@ -18,13 +16,7 @@ export default async function koagentDifre({
   managerPort,
 }) {
   const proxyLocalManager = new DifreproxyLocalManager();
-
-  const certService = createCertificateService({
-    storagePath: defaultConfig.certifacateStoragePath,
-    rootKey: defaultConfig.certifacateRootKey,
-  });
-  const proxyLocalServer = await DfireProxyLocalServer.createServer({
-    certService,
+  const proxyLocalServer = new DfireProxyLocalServer({
     forward: proxyLocalManager.forward(),
   });
 
