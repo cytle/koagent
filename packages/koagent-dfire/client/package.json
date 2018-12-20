@@ -1,5 +1,5 @@
 {
-  "name": "koagent-dfire",
+  "name": "koagent-dfire-client",
   "version": "0.1.21",
   "description": "内部Node反向代理项目环境工具",
   "main": "index.html",
