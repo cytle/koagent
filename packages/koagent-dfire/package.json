@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build:client": "cd client && npm run build",
+    "build:server": "tsc --sourceMap false --declarationMap false",
     "dev": "rimraf dist && tsc --watch",
-    "build": "rimraf dist && tsc && npm run build:client",
+    "build": "rimraf dist && npm run build:server && npm run build:client",
     "start": "ts-node src/bin/koagent-dfire",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
