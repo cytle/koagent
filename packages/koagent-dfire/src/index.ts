@@ -18,9 +18,8 @@ export default async function koagentDifre({
   const proxyLocalManager = new DifreproxyLocalManager();
   const proxyLocalServer = new DfireProxyLocalServer({
     forward: proxyLocalManager.forward(),
+    proxyPort,
   });
-
-  proxyLocalServer.listen(proxyPort);
 
   const router = new KoaRouter({
     prefix: '/api/localProxy',

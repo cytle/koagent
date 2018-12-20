@@ -6,7 +6,7 @@ export default class DfireProxyLocalServer extends events.EventEmitter {
   public proxyPort: number;
   public proxyOn: boolean;
   public app: Koa;
-  constructor({ forward }) {
+  constructor({ forward, proxyPort }) {
     super();
     this.app = new Koa;
     this.app.use(koaLogger((str, [, method, url, status, time, length]) => {
@@ -19,6 +19,7 @@ export default class DfireProxyLocalServer extends events.EventEmitter {
     this.app.on('error', (err) => {
       this.emit('error', err);
     });
+    this.listen(proxyPort);
   }
   public getState() {
     return {
