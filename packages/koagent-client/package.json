@@ -8,7 +8,9 @@
     "build": "rimraf dist && parcel build src/index.js",
     "start": "parcel src/index.html",
     "build:client": "parcel build src/index.html",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "main": "dist/index.js",
   "dependencies": {
@@ -22,7 +24,8 @@
     "vue-hot-reload-api": "^2.3.1",
     "vue-i18n": "^8.3.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.3.0",
@@ -50,5 +53,6 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "snyk": true
 }
