@@ -33,7 +33,7 @@
     "commander": "^2.19.0",
     "configstore": "^4.0.0",
     "debug": "^4.1.0",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "^1.18.1",
     "koa-compose": "^4.1.0",
     "koa-logger": "^3.2.0",
     "koa-static": "^5.0.0",
