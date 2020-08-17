@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.4.9",
     "koagent": "^0.1.21",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.20",
     "normalize.css": "^8.0.0",
     "socket.io-client": "^2.1.1",
     "vue": "^2.5.17",
