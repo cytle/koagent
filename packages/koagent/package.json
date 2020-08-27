@@ -39,7 +39,7 @@
     "koagent-client": "^0.1.21",
     "koagent-http-proxy": "^0.1.21",
     "koagent-server": "^0.1.21",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.17",
     "request": "^2.88.0",
     "vue": "^2.5.17"
   },
