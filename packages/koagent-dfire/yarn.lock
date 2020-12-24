@@ -241,6 +241,13 @@ axios@^0.18.0:
     follow-redirects "^1.3.0"
     is-buffer "^1.1.5"
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 babel-helper-vue-jsx-merge-props@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
@@ -991,6 +998,11 @@ follow-redirects@^1.0.0, follow-redirects@^1.3.0:
   dependencies:
     debug "=3.1.0"
 
+follow-redirects@^1.10.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
+  integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
+
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -1569,10 +1581,10 @@ koa@^2.5.3:
     type-is "^1.6.16"
     vary "^1.1.2"
 
-koagent-certificate@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/koagent-certificate/-/koagent-certificate-0.1.14.tgz#1edb888e56d45adcd26184081f7fed439073509c"
-  integrity sha512-HFy6MNpdtkK+MMTvxoen8/My9xo96y8Pg5RrnvaDVag6bGWp0NnC+6km3Fol4qQsxTWGdg9fIlEHwose0r+c7g==
+koagent-certificate@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/koagent-certificate/-/koagent-certificate-0.1.21.tgz#cd6902eb78e4933bf2cedcd17a760f9e467a24ad"
+  integrity sha512-ntpl+cr1zmQBhGZMbCmWQG0d+uP9Q0nX6H0FAaRpOmaz5zcloADSRz0UCP+OCZV/fozxfrls6af9YD7H7zig2Q==
   dependencies:
     fs-extra "^7.0.0"
     koa "^2.5.3"
@@ -1583,14 +1595,14 @@ koagent-certificate@^0.1.14:
     pem "^1.13.1"
     promisfy "^1.1.4"
 
-koagent-client@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/koagent-client/-/koagent-client-0.1.14.tgz#dc9688e72bd4fda2b3e9dc9d743d3eb99e834224"
-  integrity sha512-i0aQ7pWN9jYPV+GKZwfpK3qC5eXzDr2uQUDII2M7Jr0QkQsDfJsPUmFaes2vPd0JgVLeBhrKtsW36rY7dpAvDQ==
+koagent-client@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/koagent-client/-/koagent-client-0.1.21.tgz#a06d9b718996e7e6114e7d688e80dd593428370a"
+  integrity sha512-0odl0D6l0b5669VxxMJ4mHXEW5qyjIOLFu1rKRdpeZRXPrz8bRFdXspve6X7s9TywDhzKTCdgyy/Rtkpj0Y98A==
   dependencies:
     axios "^0.18.0"
     element-ui "^2.4.9"
-    koagent "^0.1.14"
+    koagent "^0.1.21"
     lodash "^4.17.11"
     normalize.css "^8.0.0"
     socket.io-client "^2.1.1"
@@ -1600,27 +1612,27 @@ koagent-client@^0.1.14:
     vue-router "^3.0.1"
     vuex "^3.0.1"
 
-koagent-http-proxy@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.npmjs.org/koagent-http-proxy/-/koagent-http-proxy-0.1.13.tgz#51a982a363c75a38cba7f851698567c85500cb88"
-  integrity sha512-q07ZTF4hr265BHb0W6WLzINqYT/pAbXyM1+2qZ/YFV61V8v5ELJ9KheQHpMC52op1IEs6NDgHmSdPWXs0Xsw2w==
+koagent-http-proxy@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/koagent-http-proxy/-/koagent-http-proxy-0.1.21.tgz#01c5acf24735cee25455d0d619936dc3c3b3d496"
+  integrity sha512-QwV5mIzPHU3XlibYzZSNu9HjcuqdJ0KURGEQABsVzG3heANLr3DI52RYxZkPZOF4Ddfypy3gRZjS2T1PuzGvlg==
   dependencies:
     http-proxy "^1.17.0"
     lodash "^4.17.11"
 
-koagent-server@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/koagent-server/-/koagent-server-0.1.14.tgz#6f190020ec7cea571af62c3735402e2918abb39e"
-  integrity sha512-D50bJGmoI4GMrlIx/wlO+MP8A1AxcQv3kqqHB6hym12OeFsUwiKG15LsT9jbiQmJZoS8rD5zHDU6FaPQt+4h0A==
+koagent-server@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/koagent-server/-/koagent-server-0.1.21.tgz#a2beb4f0fc569fa83bdacecf767328eaa991ad5d"
+  integrity sha512-W/fNBS+ZLx9zF2fGFAIYl7tBQhdmo6ReIeFL2hrK0s1iqdXf0QEfvsEaF+T2jAH65/w9w8bcRofUeQnZpZq4Ig==
   dependencies:
     debug "^4.1.0"
     get-port "^4.0.0"
-    koagent-certificate "^0.1.14"
+    koagent-certificate "^0.1.21"
 
-koagent@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/koagent/-/koagent-0.1.14.tgz#e9f510f62d4affd6ac2bc85fdd5a22f41d6517d9"
-  integrity sha512-5OEOH07aCO9UaKQvyzzfeagbYbQaHE0+kzyf3oLKk1wGQaTCx9XPVrCyswORMZo7UbDRnZX3yG/dB/Mc9EyVcg==
+koagent@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/koagent/-/koagent-0.1.21.tgz#4ac7224db48b1335882bb9bd9e1175f48eda88cf"
+  integrity sha512-S6qJZJXPfcK+j8oWNf0867dxUOdNxvyvIbBwsxOQaAeOrEKfH95eIiHt+MEb74FFypqVlxxI/ITBxOlXXQqUPg==
   dependencies:
     axios "^0.18.0"
     babel-polyfill "^6.26.0"
@@ -1631,10 +1643,10 @@ koagent@^0.1.14:
     koa-logger "^3.2.0"
     koa-mount "^4.0.0"
     koa-router "^7.4.0"
-    koagent-certificate "^0.1.14"
-    koagent-client "^0.1.14"
-    koagent-http-proxy "^0.1.13"
-    koagent-server "^0.1.14"
+    koagent-certificate "^0.1.21"
+    koagent-client "^0.1.21"
+    koagent-http-proxy "^0.1.21"
+    koagent-server "^0.1.21"
     lodash "^4.17.11"
     request "^2.88.0"
     vue "^2.5.17"
