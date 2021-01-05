@@ -26,7 +26,7 @@
   },
   "author": "炒饭 <canyoutle@gmail.com> (https://github.com/cytle)",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "debug": "^4.1.0",
     "fs-extra": "^7.0.0",
